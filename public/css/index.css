@@ -8,6 +8,7 @@ nav {
     top: 0;
     width: 100%;
     z-index: 100;
+    transition: ease-in-out 200ms;
 }
 
 .nav-item.active {
@@ -46,6 +47,15 @@ nav ul li {
     box-shadow: -1px 5px 20px 3px rgba(99, 166, 248, 0.29);
 }
 
+
+.navActive {
+    background-color: '#f6fbfe',
+}
+
+
+.navInactive {
+    background-color: '#f6fbfe',
+}
 /* banner */
 
 .header {
@@ -110,4 +120,19 @@ nav ul li {
 /* section */
 .section {
     height: 100vh;
+}
+
+
+
+/* media query */
+
+@media only screen and (min-width:0px) and (max-width:576px) {
+    .hide-xs {
+        display: none;
+    }
+    .middle-xs {
+        text-align: center !important;
+        display: inline-block;
+        width: 100% !important;
+    }
 }
