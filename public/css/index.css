@@ -75,6 +75,11 @@ nav ul li {
     height: 100vh;
 }
 
+.wrapper {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
 .jumbotron {
     background-color: #f6fbfe;
     z-index: 2;
@@ -85,10 +90,6 @@ nav ul li {
     min-height: 100%;
     display: flex;
     align-items: center;
-}
-
-.c_shrink {
-    margin: auto 5rem !important;
 }
 
 .img_container {
@@ -141,11 +142,6 @@ nav ul li {
     background-color: rgba(222, 241, 255, 0.51);
 }
 
-.wrapper {
-    width: 100%;
-    padding: 4rem 5rem;
-}
-
 .about-img {
     -webkit-filter: drop-shadow(3px 0px 6px rgba(136, 184, 243, 0.35));
     filter: drop-shadow(3px 0px 6px rgba(136, 184, 243, 0.35));
@@ -160,12 +156,6 @@ nav ul li {
 /* features */
 section#features {
     background-color: #f6fbfe;
-    height: 100vh;
-    width: 100%;
-}
-
-.wrapper {
-    padding: 4rem 5rem;
 }
 
 h2,
@@ -215,9 +205,73 @@ h5 {
 }
 
 /* media query */
+@media only screen and (min-width:992px) {
+    .wrapper {
+        padding: auto 5rem;
+    }
+
+    /* shapes */
+    .shape_left {
+        top: -50rem;
+        left: -8rem;
+    }
+}
+
+@media only screen and (min-width:576px)and (max-width:992px) {
+
+    /* all */
+    .wrapper {
+        padding: 3rem 0rem;
+    }
+
+    /* shapes */
+    .shape_left {
+        top: -49rem;
+        left: -12rem;
+        width: 60vw;
+    }
+
+    .shape_right {
+        bottom: 44rem;
+        right: -25.5rem;
+        width: 80vw;
+    }
+}
+
 @media only screen and (min-width:0px) and (max-width:576px) {
-    .navbar-brand {
-        color: #2179ff !important;
+
+    /* all */
+    .wrapper {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    /* shapes */
+    .shape {
+        width: 100vw;
+        height: 40vh;
+    }
+
+    .shape_left {
+        top: -47rem;
+        left: -14rem;
+    }
+
+    /* header */
+
+    .shape_left {
+        top: -47rem;
+        left: -14rem;
+    }
+
+    .shape_right {
+        bottom: 37rem;
+        right: -19.5rem;
+    }
+
+    .user_btn {
+        width: 50% !important;
+        margin-left: 20vw;
     }
 
     #main_carousel {
@@ -226,12 +280,6 @@ h5 {
 
     .hide-xs {
         display: none;
-    }
-
-    .middle-xs {
-        text-align: center !important;
-        display: inline-block;
-        width: 100% !important;
     }
 
     /* about section */
@@ -250,14 +298,25 @@ h5 {
         border-bottom: solid 2px #e6ebee;
 
     }
+
     .about_text h3 {
         text-align: center;
         font-size: 1.5rem;
     }
+
     .about_text p {
         display: none;
     }
+
     /* feature */
+    .features_all {
+        text-align: center;
+    }
+
+    .feature_main_para {
+        display: none;
+    }
+
     .feature_text p {
         display: none;
     }
