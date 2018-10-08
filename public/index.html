@@ -41,21 +41,29 @@
             <div class="container">
                 <div class="c_shrink">
                     <div class="row text-md-left text-sm-center">
-                        <div>
-                            <h2 class="d-md-none d-sm-block middle-xs text-center mr-5">Best Social App</h2>
-                            <div class="col-lg-6 col-md-6 img_container d-md-none d-sm-block mb-5">
-                                <img id="bannerImage" src="/images/one.png" alt="Banner Image">
-                            </div>
-                        </div>
+                        <!-- text -->
                         <div class="col-lg-6 col-md-6 m-auto">
                             <h2 class="d-md-block d-sm-none hide-xs">Best Social App</h2>
                             <p class="lead d-md-block d-sm-none hide-xs">Meet, Talk, Chat with your all friends here.</p>
-                            <!-- <a class="nav-item nav-link d-inline user_btn" href="#">Sign Up</a> -->
                             <a class="nav-item nav-link user_btn w-50 middle-xs" href="#">Register</a>
                         </div>
-                        <div class="col-lg-6 col-md-6 img_container d-md-block d-sm-none hide-xs">
-                            <img id="bannerImage" src="/images/one.png" alt="Banner Image">
+                        <!-- carousel -->
+                        <div id="main_carousel" class="col-lg-6 col-md-6 img_container carousel slide" data-interval="2500"
+                            data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img id="bannerImage" src="/images/carousel1.png" alt="First slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img id="bannerImage" src="/images/carousel2.png" alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img id="bannerImage" src="/images/carousel3.png" alt="Third slide">
+                                </div>
+                            </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
@@ -67,12 +75,13 @@
         </div>
     </div>
 
-    <div class="about_app">
+    <!-- About -->
+    <div id="about_app">
         <div class="container">
             <div class="about">
                 <div class="row">
-                    <div class="col-md-6">
-                        <img class="about-img" src="/images/two.png" alt="fast message">
+                    <div class="col-md-6 text-center">
+                        <img class="about-img" src="/images/fast_message.png" alt="fast message">
                     </div>
                     <div class="col-md-6 m-auto about_text">
                         <h3>Easy Messaging</h3>
@@ -83,15 +92,18 @@
                 <div class="row pt-5">
                     <div class="col-md-6 m-auto about_text">
                         <h3>Fast Loading</h3>
-                        <p>Feel the Lightning speed. Message worldwide with the highest speed protocol. we know the value of time and thats why users dont need to wait for anything.</p>
+                        <p>Feel the Lightning speed. Message worldwide with the highest speed protocol. we know the
+                            value of time and thats why users dont need to wait for anything.</p>
                     </div>
-                    <div class="col-md-6">
-                        <img class="about-img" src="/images/three.png" alt="fast message">
+                    <div class="col-md-6 text-center">
+                        <img class="about-img" src="/images/fast_loading.png" alt="fast message">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Feature -->
 
     <!-- scripts bootsrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -4,6 +4,7 @@
 }
 
 nav {
+    padding-top: 2rem !important;
     position: fixed !important;
     top: 0;
     width: 100%;
@@ -49,6 +50,7 @@ nav ul li {
 
 
 .navActive {
+    padding: .5rem 1rem !important;
     background-color: #f6fbfe;
     border-bottom: solid 2px #e6ebee;
 }
@@ -60,8 +62,7 @@ nav ul li {
 /* banner */
 
 .header {
-    overflow: hidden;
-    /* width: 100vw; */
+    overflow: hidden !important;
     height: 100vh;
 }
 
@@ -89,6 +90,7 @@ nav ul li {
     width: inherit;
     -webkit-filter: drop-shadow(3px 0px 6px rgba(149, 149, 149, 0.36));
     filter: drop-shadow(3px 0px 6px rgba(149, 149, 149, 0.36));
+    object-fit: cover;
 }
 
 /* shapes */
@@ -126,7 +128,7 @@ nav ul li {
 
 /* about section */
 
-.about_app {
+#about_app {
     background-color: rgba(222, 241, 255, 0.51);
 }
 
@@ -150,6 +152,14 @@ nav ul li {
 /* media query */
 
 @media only screen and (min-width:0px) and (max-width:576px) {
+    .navbar-brand {
+        color: #2179ff !important;
+    }
+
+    #main_carousel {
+        margin-top: 3rem;
+    }
+
     .hide-xs {
         display: none;
     }
@@ -158,5 +168,22 @@ nav ul li {
         text-align: center !important;
         display: inline-block;
         width: 100% !important;
+    }
+
+    /* about section */
+    .about-img {
+        width: 60%;
+        margin-bottom: 1rem;
+    }
+
+    .about {
+        text-align: center;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .about .row:first-child {
+        border-bottom: solid 2px #e6ebee;
+
     }
 }
