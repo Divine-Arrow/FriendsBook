@@ -271,7 +271,7 @@ h5 {
     /* header */
 
     .shape_left {
-        top: -47rem;
+        top: -46rem;
         left: -14rem;
     }
 
@@ -323,9 +323,16 @@ h5 {
     .features_all {
         text-align: center;
     }
+    .feature_main_para {
+        display: none;
+    }
 
     .section_main_para {
         display: none;
+    }
+
+    .info_text h5 {
+        text-align: left;
     }
 
     .info_text p {
