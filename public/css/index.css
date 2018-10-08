@@ -7,6 +7,7 @@ nav {
     position: fixed !important;
     top: 0;
     width: 100%;
+    z-index: 100;
 }
 
 .nav-item.active {
@@ -28,17 +29,34 @@ nav ul li {
     padding: 0 0.35rem;
 }
 
+.navbar-brand {
+    color: white !important;
+    letter-spacing: 1px;
+}
+
 .user_btn {
+    display: inline-block;
     margin-top: 2px;
+    text-align: center;
     background-color: #2179ff !important;
     color: white !important;
     border-radius: 40px;
     padding: 0.4rem 2.2rem !important;
     letter-spacing: 1px;
+    box-shadow: -1px 5px 20px 3px rgba(99, 166, 248, 0.29);
+}
+
+/* banner */
+
+.header {
+    overflow: hidden;
+    /* width: 100vw; */
+    height: 100vh;
 }
 
 .jumbotron {
     background-color: #f6fbfe;
+    z-index: 2;
 }
 
 .vertical-center {
@@ -52,6 +70,44 @@ nav ul li {
     margin: auto 5rem !important;
 }
 
+.img_container {
+    z-index: 2;
+}
+
 #bannerImage {
     width: inherit;
+    -webkit-filter: drop-shadow(3px 0px 6px rgba(149, 149, 149, 0.36));
+    filter: drop-shadow(3px 0px 6px rgba(149, 149, 149, 0.36));
+}
+
+/* shapes */
+.shape {
+    background-color: #0f7cff;
+    width: 40vw;
+    height: 45vh;
+    z-index: 1;
+    position: relative;
+    box-shadow: 0 2px 49px 0 rgba(34, 106, 191, 0.3)
+}
+
+.shape_left {
+    top: -45rem;
+    left: -15rem;
+    border-bottom-right-radius: 45px;
+    transform: rotate(-35deg);
+}
+
+.shape_right {
+    bottom: 47rem;
+    right: -49.5rem;
+    transform: rotate(-35deg);
+    width: 60vw;
+    height: 84vh;
+    border-top-left-radius: 45px;
+    z-index: 1;
+}
+
+/* section */
+.section {
+    height: 100vh;
 }
