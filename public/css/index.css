@@ -8,7 +8,7 @@ nav {
     top: 0;
     width: 100%;
     z-index: 100;
-    transition: ease-in-out 200ms;
+    transition: ease-in-out 100ms;
 }
 
 .nav-item.active {
@@ -49,13 +49,14 @@ nav ul li {
 
 
 .navActive {
-    background-color: '#f6fbfe',
+    background-color: #f6fbfe;
+    border-bottom: solid 2px #e6ebee;
 }
 
-
-.navInactive {
-    background-color: '#f6fbfe',
+.navActive .container .navbar-brand {
+    color: #2179ff !important;
 }
+
 /* banner */
 
 .header {
@@ -70,8 +71,8 @@ nav ul li {
 }
 
 .vertical-center {
-    min-height: 100%;
     min-height: 95vh;
+    min-height: 100%;
     display: flex;
     align-items: center;
 }
@@ -123,6 +124,28 @@ nav ul li {
 }
 
 
+/* about section */
+
+.about_app {
+    background-color: rgba(222, 241, 255, 0.51);
+}
+
+.about {
+    width: 100%;
+    padding: 4rem 5rem;
+}
+
+.about-img {
+    -webkit-filter: drop-shadow(3px 0px 6px rgba(136, 184, 243, 0.35));
+    filter: drop-shadow(3px 0px 6px rgba(136, 184, 243, 0.35));
+
+}
+
+.about_text p {
+    margin-top: 1.5rem;
+    font-weight: lighter !important;
+    color: #525252 !important;
+}
 
 /* media query */
 
@@ -130,6 +153,7 @@ nav ul li {
     .hide-xs {
         display: none;
     }
+
     .middle-xs {
         text-align: center !important;
         display: inline-block;

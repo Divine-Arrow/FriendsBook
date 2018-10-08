@@ -2,9 +2,9 @@ var scollAnimation = function () {
     xAxis = scrollX;
     yAxis = scrollY;
     if (yAxis < $('.navbar').innerHeight()) {
-        $('.navbar').css("background-color", "transparent");
+        $('.navbar').removeClass('navActive');
     } else if (yAxis > $('.navbar').innerHeight()) {
-        $('.navbar').css("background-color", "#f6fbfe");
+        $('.navbar').addClass('navActive');
     }
 }
 
