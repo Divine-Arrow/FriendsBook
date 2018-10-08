@@ -1,6 +1,11 @@
 * {
     font-family: 'Quicksand', sans-serif !important;
-    font-weight: bold;
+}
+
+p {
+    font-size: 1.1rem;
+    font-weight: lighter !important;
+    color: #525252 !important;
 }
 
 nav {
@@ -46,8 +51,12 @@ nav ul li {
     padding: 0.4rem 2.2rem !important;
     letter-spacing: 1px;
     box-shadow: -1px 5px 20px 3px rgba(99, 166, 248, 0.29);
+    transition: ease-in-out 250ms;
 }
 
+.user_btn:hover {
+    background-color: #5e9bf8 !important;
+}
 
 .navActive {
     padding: .5rem 1rem !important;
@@ -132,7 +141,7 @@ nav ul li {
     background-color: rgba(222, 241, 255, 0.51);
 }
 
-.about {
+.wrapper {
     width: 100%;
     padding: 4rem 5rem;
 }
@@ -145,12 +154,67 @@ nav ul li {
 
 .about_text p {
     margin-top: 1.5rem;
-    font-weight: lighter !important;
-    color: #525252 !important;
+    font-size: 1rem;
+}
+
+/* features */
+section#features {
+    background-color: #f6fbfe;
+    height: 100vh;
+    width: 100%;
+}
+
+.wrapper {
+    padding: 4rem 5rem;
+}
+
+h2,
+h3,
+h5 {
+    font-weight: bold;
+}
+
+h5 {
+    font-size: 1.2rem;
+    margin-bottom: 1px;
+}
+
+.feature {
+    cursor: pointer;
+    margin-bottom: 1.7rem;
+}
+
+.feature:hover .feature_image_box {
+    /* background-color: red; */
+    border-bottom: solid 4px #0f7cff;
+}
+
+.feature p {
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+}
+
+.feature_image_box {
+    float: right;
+    width: 5rem;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: white;
+    box-shadow: none;
+    box-shadow: 0px 0px 11px 3px rgba(124, 124, 124, 0.14);
+    border-radius: 4px;
+    transition: ease-in-out 100ms;
+}
+
+.feature_text {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 /* media query */
-
 @media only screen and (min-width:0px) and (max-width:576px) {
     .navbar-brand {
         color: #2179ff !important;
@@ -185,5 +249,16 @@ nav ul li {
     .about .row:first-child {
         border-bottom: solid 2px #e6ebee;
 
+    }
+    .about_text h3 {
+        text-align: center;
+        font-size: 1.5rem;
+    }
+    .about_text p {
+        display: none;
+    }
+    /* feature */
+    .feature_text p {
+        display: none;
     }
 }
