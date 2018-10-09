@@ -1,5 +1,6 @@
 * {
     font-family: 'Quicksand', sans-serif !important;
+    outline: none !important;
 }
 
 p {
@@ -20,7 +21,6 @@ nav {
 .nav-item.nav-link.active,
 .nav-item.nav-link:hover {
     color: #2179ff !important;
-    padding-bottom: 0px;
     border-bottom: solid 3px #2179ff;
     transition: all 0.2s;
 }
@@ -69,6 +69,16 @@ nav {
 }
 
 .navActive .container .navbar-brand {
+    color: #2179ff !important;
+
+}
+.navActiveToggle {
+    padding: .5rem 1rem !important;
+    background-color: #f6fbfe !important;
+    border-bottom: solid 2px #e6ebee;
+}
+
+.navActiveToggle .container .navbar-brand {
     color: #2179ff !important;
 }
 
@@ -122,6 +132,7 @@ nav {
     left: -13rem;
     border-bottom-right-radius: 45px;
     transform: rotate(-35deg);
+    transition: all ease-in-out 5s;
 }
 
 .shape_right {
@@ -132,7 +143,17 @@ nav {
     height: 84vh;
     border-top-left-radius: 45px;
     z-index: 1;
+    transition: all ease-in-out 5s;
 }
+
+.rotate_more_l {
+    transform: rotate(-15deg);
+}
+
+.rotate_more_r {
+    transform: rotate(-48deg) !important;
+}
+
 
 /* section */
 .section {
@@ -141,10 +162,6 @@ nav {
 
 
 /* about section */
-
-/* #about_app {
-    background-color: rgba(222, 241, 255, 0.51);
-} */
 
 .about-img {
     -webkit-filter: drop-shadow(3px 0px 6px rgba(136, 184, 243, 0.35));
@@ -286,6 +303,10 @@ h5 {
 }
 
 @media only screen and (min-width:576px)and (max-width:992px) {
+    /* nav */
+    .nav-item.nav-link.active {
+        border-bottom: 0px !important;
+    }
 
     /* all */
     .wrapper {
@@ -327,6 +348,10 @@ h5 {
 }
 
 @media only screen and (min-width:0px) and (max-width:576px) {
+    /* nav */
+    .nav-item.nav-link.active {
+        border-bottom: 0px !important;
+    }
 
     /* all */
     .wrapper {
