@@ -117,7 +117,7 @@ nav {
 
 .shape_left {
     top: -47rem;
-    left: -15rem;
+    left: -13rem;
     border-bottom-right-radius: 45px;
     transform: rotate(-35deg);
 }
@@ -211,6 +211,10 @@ h5 {
     align-items: center;
     flex-wrap: wrap;
 }
+/* get started */
+#get_started {
+    background-color: #f6fbfe;
+}
 
 /* media query */
 @media only screen and (min-width:1140px) {}
@@ -247,6 +251,24 @@ h5 {
         right: -25.5rem;
         width: 80vw;
     }
+    /* banner */
+    .middle_xs {
+        display: inline-block !important;
+        margin-top: 2rem;
+    }
+
+    #main_carousel {
+        margin-top: 3rem;
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+    .register {
+        display: none;
+    }
+
+    .hide-xs {
+        display: none;
+    }
 }
 
 @media only screen and (min-width:0px) and (max-width:576px) {
@@ -257,18 +279,16 @@ h5 {
         padding-bottom: 3rem;
     }
 
+    .jumbotron h2 {
+        text-align: center;
+    }
+
     /* shapes */
     .shape {
         width: 100vw;
         height: 40vh;
     }
 
-    .shape_left {
-        top: -46.5rem;
-        left: -14rem;
-    }
-
-    /* header */
 
     .shape_left {
         top: -46rem;
@@ -280,13 +300,25 @@ h5 {
         right: -19.5rem;
     }
 
+    /* header */
+
     .user_btn {
         width: 50% !important;
         margin-left: 20vw;
     }
 
+    .middle_xs {
+        display: inline-block !important;
+        margin-top: 1.5rem;
+    }
+
     #main_carousel {
-        margin-top: 3rem;
+        margin-top: 1rem;
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+    .register {
+        display: none;
     }
 
     .hide-xs {
@@ -295,7 +327,7 @@ h5 {
 
     /* about section */
     .about-img {
-        width: 60%;
+        width: 45%;
         margin-bottom: 1rem;
     }
 
@@ -310,9 +342,15 @@ h5 {
 
     }
 
+    .line_bottom{
+        border-bottom: solid 2px #c7c7c7d9;
+        padding-bottom: 7px;
+    }
+
     .about_text h3 {
         text-align: center;
         font-size: 1.5rem;
+        margin-top: 0.5rem;
     }
 
     .about_text p {
@@ -323,6 +361,7 @@ h5 {
     .features_all {
         text-align: center;
     }
+
     .feature_main_para {
         display: none;
     }
