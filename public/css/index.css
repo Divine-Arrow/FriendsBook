@@ -148,6 +148,9 @@ nav {
     color: white !important;
     letter-spacing: 1px;
 }
+.color_other {
+    color: #2179ff !important;
+}
 
 .user_btn {
     display: inline-block;
