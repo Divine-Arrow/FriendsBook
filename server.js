@@ -12,8 +12,12 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
+
+// routes
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('index', {
+        homepage: true
+    });
 });
 
 app.get('/register', (req, res) => {

@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/index.css">
     <title>FriendsBook</title>
 </head>
@@ -16,23 +15,27 @@
 <body>
 
     <!-- loader -->
-    
+
     <div class="loader_container fixed-top">
-            <p>FriendsBook</p>
-            <div class="loader"></div>
-            <p>Loading . . .</p>
+        <p>FriendsBook</p>
+        <div class="loader"></div>
+        <p>Loading . . .</p>
     </div>
     <!-- navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light">
+    {{#if homepage}}
+    <nav class="navbar navbar-expand-lg navbar-light">
+        {{else}}
+        <nav class="navbar navbar-expand-lg navbar-light navActive">
+            {{/if}}
             <div class="container">
-                <a class="navbar-brand" href="#">FriendsBook</a>
+                <a class="navbar-brand" href="/">FriendsBook</a>
                 <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <ul class="navbar-nav ml-auto">
-                        <li><a class="nav-item nav-link active" href="#">Home</a></li>
+                        <li><a class="nav-item nav-link active" href="/">Home</a></li>
                         <li><a class="nav-item nav-link" href="#">Feature</a></li>
                         <li><a class="nav-item nav-link" href="#">Pricing</a></li>
                         <li><a class="nav-item nav-link" href="#">Pages</a></li>
@@ -43,82 +46,86 @@
         </nav>
 
 
-    {{{body}}}
-    <!-- fotter -->
-    <section id="fotter">
-        <div class="container">
-            <div class="wrapper pb-2">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="info_text form-group">
-                            <h4 class="text-primary">FriendsBook</h4>
-                            <p class="w-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-                                ratione dolores id nesciunt culpa sapiente similique totam quaerat, fugiat ex eos
-                                repellat delectus?</p>
+        {{{body}}}
+        <!-- fotter -->
+        <section id="fotter">
+            <div class="container">
+                <div class="wrapper pb-2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="info_text form-group">
+                                <h4 class="text-primary">FriendsBook</h4>
+                                <p class="w-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+                                    ratione dolores id nesciunt culpa sapiente similique totam quaerat, fugiat ex eos
+                                    repellat delectus?</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-sm-4 col-6">
-                                <h6>Company</h6>
-                                <ul>
-                                    <li>About us</li>
-                                    <li>Press</li>
-                                    <li>Review</li>
-                                    <li>Partners</li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-4 col-6">
-                                <h6>Blog</h6>
-                                <ul>
-                                    <li>Finance</li>
-                                    <li>Technology</li>
-                                    <li>Mobile</li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-4 col-6">
-                                <h6>Integrations</h6>
-                                <ul>
-                                    <li>Android App</li>
-                                    <li>IOS App</li>
-                                    <li>Windows App</li>
-                                    <li>Ubuntu</li>
-                                </ul>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-sm-4 col-6">
+                                    <h6>Company</h6>
+                                    <ul>
+                                        <li>About us</li>
+                                        <li>Press</li>
+                                        <li>Review</li>
+                                        <li>Partners</li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-4 col-6">
+                                    <h6>Blog</h6>
+                                    <ul>
+                                        <li>Finance</li>
+                                        <li>Technology</li>
+                                        <li>Mobile</li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-4 col-6">
+                                    <h6>Integrations</h6>
+                                    <ul>
+                                        <li>Android App</li>
+                                        <li>IOS App</li>
+                                        <li>Windows App</li>
+                                        <li>Ubuntu</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="fotter_bottom">
-        <div class="container">
-            <div class="fotter_bottom">
-                <div class="row">
-                    <div class="col-lg-6 col-sm-12 text-center">
-                        <p class="mb-0">&copy; 2018 Copyright, All Rights Reserved by FirendsBook
-                        </p>
-                    </div>
-                    <div class="col-lg-6 col-sm-12 text-center d-sm-block d-none">
-                        <ul class="mb-0 pl-0">
-                            <li class="pl-0">Terms & Condition</li>
-                            <li>Privacy Policy</li>
-                            <li>Help</li>
-                        </ul>
+        <section id="fotter_bottom">
+            <div class="container">
+                <div class="fotter_bottom">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12 text-center">
+                            <p class="mb-0">&copy; 2018 Copyright, All Rights Reserved by FirendsBook
+                            </p>
+                        </div>
+                        <div class="col-lg-6 col-sm-12 text-center d-sm-block d-none">
+                            <ul class="mb-0 pl-0">
+                                <li class="pl-0">Terms & Condition</li>
+                                <li>Privacy Policy</li>
+                                <li>Help</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-    </section>
+        </section>
 
-    <!-- scripts bootsrap -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-    <script src="/js/index.js"></script>
+        <!-- scripts bootsrap -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+
+        {{#if homepage}}
+        <script src="/js/home.js"></script>
+        {{/if}}
+        <script src="/js/index.js"></script>
 </body>
 
 </html>

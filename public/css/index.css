@@ -2,6 +2,7 @@
     font-family: 'Quicksand', sans-serif !important;
     outline: none !important;
 }
+
 /* loader */
 
 .loader_container {
@@ -82,10 +83,12 @@
         -webkit-transform: translateX(40px);
         transform: translateX(40px);
     }
+
     50% {
         -webkit-transform: translateX(-30px);
         transform: translateX(-30px);
     }
+
     100% {
         -webkit-transform: translateX(40px);
         transform: translateX(40px);
@@ -97,21 +100,24 @@
         -webkit-transform: translateX(40px);
         transform: translateX(40px);
     }
+
     50% {
         -webkit-transform: translateX(-30px);
         transform: translateX(-30px);
     }
+
     100% {
         -webkit-transform: translateX(40px);
         transform: translateX(40px);
     }
 }
+
 /* loader ends */
 
 p {
-    font-size: 1.1rem;
+    font-size: 0.88rem;
     font-weight: lighter !important;
-    color: #525252 !important;
+    color: #929292 !important;
 }
 
 nav {
@@ -148,6 +154,7 @@ nav {
     color: white !important;
     letter-spacing: 1px;
 }
+
 .color_other {
     color: #2179ff !important;
 }
@@ -279,7 +286,6 @@ nav {
 
 .about_text p {
     margin-top: 1.5rem;
-    font-size: 1rem;
 }
 
 /* features */
@@ -398,6 +404,58 @@ h5 {
     text-align: center;
 }
 
+
+/* input fields */
+input {
+    background-color: transparent;
+    border: solid 1px rgb(165, 165, 165);
+    padding: 1.3rem 1.35rem !important;
+    font-size: 0.86rem !important;
+    color: black !important;
+}
+
+input:focus {
+    border-color: #2179ff !important;
+    outline: 0;
+    box-shadow: 0 0 0 0.04rem rgb(33, 121, 255) !important;
+}
+
+.form-group {
+    margin-bottom: 1.4rem;
+}
+
+/* oauth */
+.oauth_container {
+    margin-bottom: 1.6rem;
+}
+.oauth {
+    display: inline-block;
+    color: white;
+    border-radius: 3px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.oauth:not(:first-child) {
+    margin-left: 1rem;
+}
+
+.oauth a {
+    text-decoration: none;
+    color: white;
+    width: 8rem;
+    outline: none !important
+}
+
+.facebook {
+    background-color: #3b5999;
+}
+
+.google {
+    background-color: #dd4b39;
+}
+
 /* media query */
 @media only screen and (min-width:1140px) {}
 
@@ -500,7 +558,6 @@ h5 {
     /* header */
 
     .user_btn {
-        width: 50% !important;
         margin-left: 20vw;
     }
 
