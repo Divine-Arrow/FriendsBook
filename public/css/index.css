@@ -149,10 +149,13 @@ nav {
     font-weight: bold;
 }
 
+a.nav-item.nav-link {
+    padding-bottom: 0px;
+}
+
 .navbar-brand {
     font-weight: bold;
     color: white !important;
-    letter-spacing: 1px;
 }
 
 .color_other {
@@ -168,7 +171,7 @@ nav {
     border-radius: 40px;
     padding: 0.4rem 2.2rem !important;
     letter-spacing: 1px;
-    box-shadow: -1px 5px 20px 3px rgba(99, 166, 248, 0.29);
+    box-shadow: 0px 2px 13px 3px rgba(99, 166, 248, 0.29);
     transition: ease-in-out 250ms;
 }
 
@@ -428,6 +431,7 @@ input:focus {
 .oauth_container {
     margin-bottom: 1.6rem;
 }
+
 .oauth {
     display: inline-block;
     color: white;
@@ -635,5 +639,11 @@ input:focus {
 
     #use .about_text {
         margin-left: 20% !important;
+    }
+
+    /* form */
+
+    form p a {
+        font-size: 0.7rem;
     }
 }
