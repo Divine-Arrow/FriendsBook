@@ -460,6 +460,60 @@ input:focus {
     background-color: #dd4b39;
 }
 
+/* chat */
+#chat_container {
+    padding-top: 3.7rem;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+#chat_container ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+#chat_container ul li {
+    width: 100%;
+}
+
+.friendsList {
+    height: inherit;
+}
+
+.friend_profile_thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.friend_data_thumb {
+    display: inline-block;
+    margin: auto;
+    margin-left: 1.1rem;
+    width: 100%;
+}
+.friend_data_thumb p {
+    margin-bottom: 0px;
+    font-size: 0.74rem;
+}
+
+.online_green {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: #64e60f;
+    margin: auto;
+    border-radius: 50%;
+}
+
+.online p {
+    display: inline;
+}
+
+
+
 /* media query */
 @media only screen and (min-width:1140px) {}
 
