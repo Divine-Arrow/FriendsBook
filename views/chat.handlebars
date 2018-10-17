@@ -2,18 +2,18 @@
     <div class="row h-100">
         <div class="col-3 border-right pr-0">
             <div class="chat_nav">
-                <div class="nav_data m-auto vertical-center">
+                <div class="nav_data m-auto vertical-center border-bottom">
                     <img class="profile_thumb" src="/images/profiles/female.jpg" alt="profile Image">
                 </div>
             </div>
-            <div class="friendsList clearfix">
+            <div class="friendsList">
                 <ul>
                     <li>
                         <div class="row">
                             <div class="col-3 m-auto">
                                 <img class="friend_profile_thumb" src="/images/profiles/male.jpg" alt="profile Image">
                             </div>
-                            <div class="col-9 m-auto">
+                            <div class="col-9 m-auto pl-0">
                                 <div class="friend_data_thumb">
                                     <h5>Matt</h5>
                                     <p>5 Bucks <span class="float-right">09:10</span></p>
@@ -26,7 +26,7 @@
                             <div class="col-3 m-auto">
                                 <img class="friend_profile_thumb" src="/images/profiles/male.jpg" alt="profile Image">
                             </div>
-                            <div class="col-9 m-auto">
+                            <div class="col-9 m-auto pl-0">
                                 <div class="friend_data_thumb">
                                     <h5>Matt</h5>
                                     <p>5 Bucks <span class="float-right">09:10</span></p>
@@ -39,7 +39,7 @@
                             <div class="col-3 m-auto">
                                 <img class="friend_profile_thumb" src="/images/profiles/male.jpg" alt="profile Image">
                             </div>
-                            <div class="col-9 m-auto">
+                            <div class="col-9 m-auto pl-0">
                                 <div class="friend_data_thumb">
                                     <h5>Matt <span class="badge badge-success message-number">5</span></h5>
                                     <p class="unreadMessage_thumb">5 Bucks <span class="time_thumb float-right">09:10</span></p>
@@ -52,7 +52,7 @@
                             <div class="col-3 m-auto">
                                 <img class="friend_profile_thumb" src="/images/profiles/male.jpg" alt="profile Image">
                             </div>
-                            <div class="col-9 m-auto">
+                            <div class="col-9 m-auto pl-0">
                                 <div class="friend_data_thumb">
                                     <h5>Matt</h5>
                                     <p>5 Bucks <span class="float-right">09:10</span></p>
@@ -65,7 +65,7 @@
                             <div class="col-3 m-auto">
                                 <img class="friend_profile_thumb" src="/images/profiles/male.jpg" alt="profile Image">
                             </div>
-                            <div class="col-9 m-auto">
+                            <div class="col-9 m-auto pl-0">
                                 <div class="friend_data_thumb">
                                     <h5>Matt</h5>
                                     <p>5 Bucks <span class="float-right">09:10</span></p>
@@ -76,14 +76,15 @@
                 </ul>
             </div>
         </div>
-        <div class="col-9">
-            <div class="chatting_profile">
-                <div class="row py-3 border-bottom">
-                    <div class="col-md-1 col-3">
-                        <img class="friend_profile_thumb" src="/images/profiles/female.jpg" alt="profile Image">
+        <div class="col-9 p-0">
+            {{!-- chatter profile nav --}}
+            <div class="chatting_profile border-bottom">
+                <div class="m-auto vertical-center pl-3">
+                    <div class="d-inline-block align-middle">
+                        <img class="chatter_profile_thumb" src="/images/profiles/female.jpg" alt="profile Image">
                     </div>
-                    <div class="col-md-11 col-9">
-                        <div class="friend_data_thumb">
+                    <div class="d-inline-block align-middle">
+                        <div class="friend_data_thumb m-auto pl-2">
                             <h5>Matt</h5>
                             <div class="online">
                                 <span class="online_green"></span>
@@ -93,9 +94,24 @@
                     </div>
                 </div>
             </div>
+
+            {{!-- chatting area --}}
+            <div class="message_area">
+                <div class="message_container">
+                    {{!-- chat --}}
+                    <div class="message sent">
+                        Hello
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 <script>
-    $("nav").remove();
+    $(document).ready(() => {
+        $("nav").remove();
+        $("#fotter").remove();
+        $("#fotter_bottom").remove();
+        $("body").css('overflow', 'hidden');
+    })
 </script>

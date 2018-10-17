@@ -461,11 +461,7 @@ input:focus {
 }
 
 /* chat */
-#chat_container {
-    /* padding-top: 3.7rem; */
-    height: 100vh;
-    width: 97.5vw;
-}
+#chat_container {}
 
 
 #chat_container ul {
@@ -475,7 +471,7 @@ input:focus {
 
 #chat_container ul li {
     width: 100%;
-    border-bottom: solid 1px #eeeeee ;
+    border-bottom: solid 1px #eeeeee;
     padding: 0.65rem 1rem;
 }
 
@@ -501,8 +497,8 @@ input:focus {
 }
 
 .friend_profile_thumb {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     display: inline-block;
 }
@@ -514,6 +510,7 @@ input:focus {
     margin-left: 1.1rem;
     width: 100%;
 }
+
 .friend_data_thumb p {
     margin-bottom: 0px;
     font-size: 0.74rem;
@@ -543,6 +540,57 @@ input:focus {
     color: #13988a !important;
     font-weight: bold !important;
 }
+
+.chatting_profile {
+    height: 4rem;
+    background-color: #eeeeee;
+}
+
+.chatter_profile_thumb {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* message area */
+
+.message_area {
+    height: 90vh;
+    width: 98.45%;
+    padding: 1rem 1.5rem;
+    background-color: #f7f7f7;
+}
+
+.message {
+    padding: 0.3rem .8rem;
+    max-width: 80%;
+    float: right;
+}
+
+.message.sent {
+    background: #e1ffc7;
+    position: relative;
+}
+
+.message.sent::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0px 0 10px 10px;
+    border-color: transparent transparent transparent #e1ffc7;
+    top: 0;
+    right: -10px;
+}
+
+/* .message.sent::after {
+    border-width: 0px 0 10px 10px;
+    border-color: transparent transparent transparent #e1ffc7;
+    top: 0;
+    right: -10px;
+} */
 
 /* media query */
 @media only screen and (min-width:1140px) {}
