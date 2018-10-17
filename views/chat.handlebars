@@ -1,10 +1,15 @@
 <section id="chat_container">
-    <div class="row">
-        <div class="col-3 border-right">
+    <div class="row h-100">
+        <div class="col-3 border-right pr-0">
+            <div class="chat_nav">
+                <div class="nav_data m-auto vertical-center">
+                    <img class="profile_thumb" src="/images/profiles/female.jpg" alt="profile Image">
+                </div>
+            </div>
             <div class="friendsList clearfix">
                 <ul>
                     <li>
-                        <div class="row p-3">
+                        <div class="row">
                             <div class="col-3 m-auto">
                                 <img class="friend_profile_thumb" src="/images/profiles/male.jpg" alt="profile Image">
                             </div>
@@ -17,7 +22,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="row p-3">
+                        <div class="row">
                             <div class="col-3 m-auto">
                                 <img class="friend_profile_thumb" src="/images/profiles/male.jpg" alt="profile Image">
                             </div>
@@ -30,7 +35,20 @@
                         </div>
                     </li>
                     <li>
-                        <div class="row p-3">
+                        <div class="row">
+                            <div class="col-3 m-auto">
+                                <img class="friend_profile_thumb" src="/images/profiles/male.jpg" alt="profile Image">
+                            </div>
+                            <div class="col-9 m-auto">
+                                <div class="friend_data_thumb">
+                                    <h5>Matt <span class="badge badge-success message-number">5</span></h5>
+                                    <p class="unreadMessage_thumb">5 Bucks <span class="time_thumb float-right">09:10</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="row">
                             <div class="col-3 m-auto">
                                 <img class="friend_profile_thumb" src="/images/profiles/male.jpg" alt="profile Image">
                             </div>
@@ -43,20 +61,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="row p-3">
-                            <div class="col-3 m-auto">
-                                <img class="friend_profile_thumb" src="/images/profiles/male.jpg" alt="profile Image">
-                            </div>
-                            <div class="col-9 m-auto">
-                                <div class="friend_data_thumb">
-                                    <h5>Matt</h5>
-                                    <p>5 Bucks <span class="float-right">09:10</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row p-3">
+                        <div class="row">
                             <div class="col-3 m-auto">
                                 <img class="friend_profile_thumb" src="/images/profiles/male.jpg" alt="profile Image">
                             </div>
@@ -91,3 +96,6 @@
         </div>
     </div>
 </section>
+<script>
+    $("nav").remove();
+</script>

@@ -462,9 +462,9 @@ input:focus {
 
 /* chat */
 #chat_container {
-    padding-top: 3.7rem;
+    /* padding-top: 3.7rem; */
     height: 100vh;
-    width: 100vw;
+    width: 97.5vw;
 }
 
 
@@ -475,10 +475,29 @@ input:focus {
 
 #chat_container ul li {
     width: 100%;
+    border-bottom: solid 1px #eeeeee ;
+    padding: 0.65rem 1rem;
+}
+
+.chat_nav {
+    background-color: #eeeeee;
+    height: 4rem;
+    width: 100%;
+}
+
+.nav_data {
+    width: 90%;
 }
 
 .friendsList {
     height: inherit;
+}
+
+.profile_thumb {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: inline-block;
 }
 
 .friend_profile_thumb {
@@ -489,6 +508,7 @@ input:focus {
 }
 
 .friend_data_thumb {
+    padding-right: inherit;
     display: inline-block;
     margin: auto;
     margin-left: 1.1rem;
@@ -512,7 +532,17 @@ input:focus {
     display: inline;
 }
 
+.message-number {
+    background-color: #13988a;
+    float: right;
+    width: 2rem;
+    border-radius: 2rem;
+}
 
+.unreadMessage_thumb {
+    color: #13988a !important;
+    font-weight: bold !important;
+}
 
 /* media query */
 @media only screen and (min-width:1140px) {}
