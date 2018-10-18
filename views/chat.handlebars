@@ -1,6 +1,6 @@
 <section id="chat_container">
     <div class="row h-100">
-        <div class="col-3 border-right pr-0">
+        <div class="col-lg-3 col-md-4 col-sm-5 border-right pr-0">
             <div class="chat_nav">
                 <div class="nav_data m-auto vertical-center border-bottom">
                     <img class="profile_thumb" src="/images/profiles/female.jpg" alt="profile Image">
@@ -21,7 +21,7 @@
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <li class="active_chatter">
                         <div class="row">
                             <div class="col-3 m-auto">
                                 <img class="friend_profile_thumb" src="/images/profiles/male.jpg" alt="profile Image">
@@ -76,7 +76,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-9 p-0">
+        <div class="col-lg-9 col-md-8 col-sm-7 p-0">
             {{!-- chatter profile nav --}}
             <div class="chatting_profile border-bottom">
                 <div class="m-auto vertical-center pl-3">
@@ -101,12 +101,15 @@
                     {{!-- chat --}}
                     <div class="message sent">
                         <p>Hello</p>
+                        <span class="right_corner"><span class="inner_right_corner"></span></span>
                     </div>
 
                     <div class="message recieved">
+                        <span class="left_corner"><span class="inner_left_corner"></span></span>
                         <p>Hey</p>
                     </div>
                 </div>
+                <div class="chat_input"></div>
             </div>
         </div>
     </div>

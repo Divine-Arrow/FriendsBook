@@ -467,6 +467,7 @@ input:focus {
 #chat_container ul {
     list-style-type: none;
     padding-left: 0px;
+    height: 90vh;
 }
 
 #chat_container ul li {
@@ -479,6 +480,10 @@ input:focus {
     background-color: #eeeeee;
     height: 4rem;
     width: 100%;
+}
+
+.active_chatter {
+    background-color: rgba(19, 152, 138, 0.17);
 }
 
 .nav_data {
@@ -558,16 +563,62 @@ input:focus {
 .message_area {
     height: 90vh;
     width: 98.45%;
-    padding: 1rem 1.5rem;
+    padding: 1rem 2.5rem;
     background-color: #f7f7f7;
 }
 
 .message {
     display: block;
-    border-radius: 5px 0px 5px 5px;
     clear: both;
     position: relative;
     padding: 0.3rem .8rem;
+}
+
+.message.sent {
+    float: right;
+    border: 1.1px solid #cacaca;
+    border-radius: 5px 0px 5px 5px;
+    background-color: white;
+}
+
+.message.recieved {
+    border-radius: 0px 5px 5px 5px;
+    background: #13988a;
+    float: left;
+}
+
+.right_corner {
+    width: 20px;
+    height: 21px;
+    position: absolute;
+    right: -20px;
+    top: -1px;
+    -webkit-clip-path: polygon(0 0, 0 70%, 100% 0);
+    clip-path: polygon(0 0, 0 70%, 100% 0);
+    background-color: #cacaca;
+}
+
+.inner_right_corner {
+    width: 18px;
+    height: 17px;
+    position: absolute;
+    left: 0px;
+    top: 1px;
+    -webkit-clip-path: polygon(0 0, 0 70%, 100% 0);
+    clip-path: polygon(0 0, 0 70%, 100% 0);
+    background-color: white;
+}
+
+
+.left_corner {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: -20px;
+    top: 0px;
+    -webkit-clip-path: polygon(100% 0, 0 0, 100% 70%);
+clip-path: polygon(100% 0, 0 0, 100% 70%);
+    background-color: #13988a;
 }
 
 .message p {
@@ -580,17 +631,9 @@ input:focus {
     color: #13988a !important;
 }
 
-.message.sent {
-    float: right;
-    border: 1.1px solid #cacaca;
-}
 
-.message.recieved {
-    background: #13988a;
-    float: left;
-}
 
-.message.recieved p{
+.message.recieved p {
     color: white !important;
     float: left;
 }
