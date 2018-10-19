@@ -1,9 +1,31 @@
 <section id="chat_container">
+    <div class="menu_options menu_option_hide">
+    <div class="menu_container">
+        </div>
+        <div class="prof">
+            <h5>Profile</h5>
+            <div class="menu_dots"></div>
+        </div>
+        <ul>
+            <li>Profile</li>
+            <li>All Friend</li>
+            <li>Requests</li>
+            <li>Search</li>
+            <li>Logout</li>
+        </ul>
+        
+    </div>
     <div class="row h-100">
         <div class="col-lg-3 col-md-4 col-sm-5 border-right pr-0">
             <div class="chat_nav">
                 <div class="nav_data m-auto vertical-center border-bottom">
                     <img class="profile_thumb" src="/images/profiles/female.jpg" alt="profile Image">
+                    <div class="friend_data_thumb m-auto pl-2">
+                        <h5>Profile</h5>
+                    </div>
+                    <div class="float-right">
+                        <div class="menu_dots"></div>
+                    </div>
                 </div>
             </div>
             <div class="friendsList">
@@ -79,7 +101,7 @@
         <div class="col-lg-9 col-md-8 col-sm-7 p-0">
             {{!-- chatter profile nav --}}
             <div class="chatting_profile border-bottom">
-                <div class="m-auto vertical-center pl-3">
+                <div class="m-auto vertical-center pl-4">
                     <div class="d-inline-block align-middle">
                         <img class="chatter_profile_thumb" src="/images/profiles/male.jpg" alt="profile Image">
                     </div>
@@ -126,11 +148,14 @@
 
                     <div class="message recieved">
                         <span class="left_corner"><span class="inner_left_corner"></span></span>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, a expedita! Modi debitis placeat culpa earum commodi deserunt officiis, ipsum quo! Non neque doloremque doloribus quos obcaecati blanditiis eveniet cupiditate.</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, a expedita! Modi debitis
+                            placeat culpa earum commodi deserunt officiis, ipsum quo! Non neque doloremque doloribus
+                            quos obcaecati blanditiis eveniet cupiditate.</p>
                     </div>
                     {{!-- chat --}}
                     <div class="message sent">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia provident dolorum assumenda eius. Illo cumque nulla laboriosam sed. Aliquam, distinctio!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia provident dolorum assumenda
+                            eius. Illo cumque nulla laboriosam sed. Aliquam, distinctio!</p>
                         <span class="right_corner"><span class="inner_right_corner"></span></span>
                     </div>
 
@@ -222,11 +247,4 @@
         </div>
     </div>
 </section>
-<script>
-    $(document).ready(() => {
-        $("nav").remove();
-        $("#fotter").remove();
-        $("#fotter_bottom").remove();
-        $("body").css('overflow', 'hidden');
-    })
-</script>
+<script src="/js/chat.js"></script>

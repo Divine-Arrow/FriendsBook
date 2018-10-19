@@ -302,7 +302,7 @@ h4,
 h5,
 h6 {
     font-weight: bold;
-    color: #3c3c3c;
+    color: #616161;
 }
 
 h5 {
@@ -489,7 +489,7 @@ input:focus {
 }
 
 .active_chatter {
-    background-color: rgba(215, 238, 235, 0.73);
+    background-color: #cae9eb;
 }
 
 .nav_data {
@@ -521,6 +521,7 @@ input:focus {
     margin: auto;
     margin-left: 1.1rem;
     width: 100%;
+    line-height: .6rem;
 }
 
 .friend_data_thumb p {
@@ -572,7 +573,7 @@ input:focus {
     height: 90vh;
     width: 98.45%;
     padding: 1rem 2.5rem;
-    background-color: rgba(215, 238, 235, 0.73);
+    background-color: #cae9eb;
     overflow: scroll;
 }
 
@@ -597,7 +598,7 @@ input:focus {
     border-radius: 0px 5px 5px 5px;
     background: #13988a;
     float: left;
-    box-shadow: 4px 4px 13px 2px white;
+    box-shadow: 4px 4px 13px 2px rgba(255, 255, 255, 0.45)
 }
 
 .right_corner {
@@ -635,7 +636,7 @@ input:focus {
 }
 
 .message p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 0px;
 }
 
@@ -683,13 +684,14 @@ input:focus {
     letter-spacing: 0.65px;
     font-weight: bold;
 }
+
 /* scroll bar */
 
 .message_area::-webkit-scrollbar-track {
     /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
     background-color: transparent;
     border-radius: 10px;
-    
+
 }
 
 .message_area::-webkit-scrollbar {
@@ -699,8 +701,74 @@ input:focus {
 
 .message_area::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #0f7cff;;
+    background-color: #0f7cff;
 }
+
+.menu_container {
+    position: fixed;
+    top: 0px;
+    right: -100vw;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.47);
+    transition: cubic-bezier(0.05, 0.1, 0.51, 1.11) all 400ms;
+    opacity: 0;
+}
+
+.backFade {
+    opacity: 1;
+    left: 17rem;
+}
+
+.menu_dots {
+    width: 7px;
+    height: 35px;
+    background-color: rgb(119, 119, 119);
+    cursor: pointer;
+}
+
+.menu_options {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 17rem;
+    height: 100vh;
+    background-color: #d1e6ff;
+    border-right: solid 2px #0f7cff;
+    z-index: 1;
+    transition: cubic-bezier(0.05, 0.1, 0.51, 1.11) all 400ms;
+}
+
+
+.prof .menu_dots {
+    position: relative;
+    top: -4rem;
+    left: 14rem;
+}
+
+.menu_option_hide {
+    left: -17rem !important;
+}
+
+
+.menu_options ul li {
+    border: none !important;
+    transition: all 200ms;
+}
+
+.menu_options ul li:hover {
+    background-color: #f5f5f5 !important
+}
+
+.menu_options ul li:hover:last-child {
+    background-color: #ff9595 !important
+}
+
+.menu_options h5 {
+    padding: 2rem 1rem;
+    background-color: white;
+}
+
 /* media query */
 @media only screen and (min-width:1140px) {}
 
