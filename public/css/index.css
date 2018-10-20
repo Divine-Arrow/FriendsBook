@@ -713,9 +713,9 @@ input:focus {
     width: 100vw;
     height: 100vh;
     background-color: black;
-    opacity: 0.3;
+    opacity: 0.5;
     z-index: 0;
-    transition: cubic-bezier(0.05, 0.1, 0.51, 1.11) 350ms;
+    transition: ease-in-out all 350ms;
 }
 
 .back_toggle {
@@ -737,6 +737,7 @@ input:focus {
     height: 100vh;
     background-color: #d1e6ff;
     border-right: solid 2px #0f7cff;
+    box-shadow: 4px 0px 20px 5px rgba(0, 0, 0, 0.2);
     z-index: 1;
     transition: cubic-bezier(0.05, 0.1, 0.51, 1.11) all 400ms;
 }
@@ -755,7 +756,7 @@ input:focus {
 .menu_options ul li {
     border: none !important;
     transition: all 200ms;
-    
+
 }
 
 .menu_options ul li:hover {
@@ -771,8 +772,30 @@ input:focus {
     background-color: white;
 }
 
+/* thanks */
+.thanks_container {
+    margin-top: 6rem;
+}
+
+.thanks_container img {
+    margin-top: 7rem;
+    display: block;
+    width: 22rem;
+}
+
+.thanks_container h5 {
+    color: black;
+    font-size: 1.35rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.thanks_container a {
+    text-decoration: none !important;
+}
+
 /* media query */
-@media only screen and (min-width:1140px) {}
+@media only screen and (min-width: 1140px) {}
 
 @media only screen and (min-width:992px)and (max-width:1140px) {
     .wrapper {

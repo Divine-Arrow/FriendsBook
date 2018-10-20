@@ -32,6 +32,10 @@ app.get('/chat', (req, res) => {
     res.render('chat');
 });
 
+app.get('/thanks', (req, res) => {
+    res.render('thanks');
+});
+
 
 app.listen(port, () => {
     console.log(`App is runing in port : ${port}`);
