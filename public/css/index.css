@@ -657,23 +657,26 @@ input:focus {
     background-color: white;
     position: absolute;
     bottom: 0px;
-    right: 0px;
-    width: 100%;
+    left: 4px;
+    min-width: 100%;
     border: solid 2px #13988a;
     box-shadow: 0px -5px 7px 3px rgba(127, 255, 232, 0.18);
 }
 
-.input_area input {
+.input_area textarea {
     max-width: 90%;
     width: 90%;
     height: 3rem;
     border: none;
+    resize: none;
+    padding: 0.6rem 0.6rem 0rem 2rem;
 }
 
-.input_area input:focus {
-    border: none;
-    border: solid 2px #429af1 !important;
+.input_area textarea:focus {
     box-shadow: none !important;
+}
+.input_area textarea:focus-within{
+    border-color: #0f7cff !important;
 }
 
 .input_area button {
@@ -775,6 +778,7 @@ input:focus {
 /* thanks */
 .thanks_container {
     margin-top: 6rem;
+    height: 90vh;
 }
 
 .thanks_container img {

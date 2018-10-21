@@ -1,8 +1,20 @@
 <div class="thanks_container">
     <img class="mx-auto" src="/images/thanks.png" alt="Thanks image">
     <h5 class="text-center">Thanks for choosing us !</h5>
-    <p class="text-center px-sm-0 px-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quidem doloremque molestiasmagni sint rem sit. Nostrum cumque ipsum sint quas eveniet provident nisi!</p>
+    <p class="text-center w-75 mx-auto px-sm-0 px-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
+        quidem doloremque molestiasmagni sint rem sit. Nostrum cumque ipsum sint quas eveniet provident nisi!</p>
     <a href="/">
-        <button type="button" class="btn btn-primary px-5 py-3 d-block mx-auto">Back to Home</button>
+        <button type="button" class="btn btn-primary px-4 py-2 d-block mx-auto">Back to Home <span class="badge badge-light ml-2">4</span></button>
     </a>
 </div>
+<script>
+    $(document).ready(() => {
+        var counter = 4;
+        setInterval(() => {
+            $(".thanks_container button span").text(counter);
+            counter--;
+            if (counter < 0)
+                location.pathname = "/login"
+        }, 1000);
+    });
+</script>
