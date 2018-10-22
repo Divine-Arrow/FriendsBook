@@ -1,10 +1,9 @@
 * {
-    font-family: 'Quicksand', sans-serif !important;
+    font-family: 'Quicksand', sans-serif;
     outline: none !important;
 }
 
 .fab {
-    font-family: "Font Awesome 5 Brands" !important;
     font-weight: 100;
 }
 
@@ -453,7 +452,8 @@ input:focus {
     display: block;
     transition: ease all 300ms;
 }
-.oauth:hover .btn{
+
+.oauth:hover .btn {
     margin-top: -2rem;
 }
 
@@ -587,6 +587,15 @@ input:focus {
     height: 45px;
     border-radius: 50%;
     display: inline-block;
+}
+
+.chat_nav_pc {
+    font-size: 2rem;
+    position: absolute;
+    top: 1rem;
+    right: 3rem;
+    color: #7c7c7c;
+    cursor: pointer;
 }
 
 /* message area */
@@ -748,10 +757,9 @@ input:focus {
 }
 
 .menu_dots {
-    width: 7px;
-    height: 35px;
-    background-color: rgb(119, 119, 119);
+    color: rgb(119, 119, 119);
     cursor: pointer;
+    font-size: 2rem;
 }
 
 .menu_options {
@@ -768,10 +776,15 @@ input:focus {
 }
 
 
-.prof .menu_dots {
+.prof {
     position: relative;
-    top: -4rem;
-    left: 14rem;
+}
+.prof .menu_dots {
+    position: absolute;
+    top:0px;
+    right: 2rem;
+    color: #ff9595;
+    font-size: 2rem;
 }
 
 .menu_option_hide {
@@ -781,7 +794,6 @@ input:focus {
 .menu_options ul li {
     border: none !important;
     transition: all 200ms;
-
 }
 
 .menu_options ul li:hover {
