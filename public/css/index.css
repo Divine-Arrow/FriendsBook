@@ -510,7 +510,8 @@ input:focus {
     background-color: #cffdff;
 }
 
-.chat_nav, .chatter_nav {
+.chat_nav,
+.chatter_nav {
     background-color: #eeeeee;
     height: 4rem;
     width: 100%;
@@ -709,10 +710,15 @@ input:focus {
     border: none;
     resize: none;
     padding: 0.6rem 0.6rem 0rem 2rem;
+    transition: ease all 250ms;
 }
 
 .input_area textarea:focus {
     box-shadow: none !important;
+}
+
+.input_area textarea:focus~button {
+    background-color: #0f7cff !important;
 }
 
 /* .input_area textarea:focus .input_area{ */
@@ -728,6 +734,7 @@ input:focus {
     cursor: pointer;
     letter-spacing: 0.65px;
     font-weight: bold;
+    transition: ease all 250ms;
 }
 
 /* scroll bar */
@@ -740,11 +747,13 @@ input:focus {
 
 .message_area::-webkit-scrollbar {
     width: 6px;
-    background-color: transparent;}
+    background-color: transparent;
+}
 
 .message_area::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #0f7cff;}
+    background-color: #0f7cff;
+}
 
 .back {
     position: fixed;
@@ -884,6 +893,13 @@ input:focus {
 
     .chat_nav .menu_dots {
         display: none;
+    }
+
+    /* input area */
+    .input_area {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
     }
 
 }
