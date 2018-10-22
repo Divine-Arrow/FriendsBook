@@ -1,7 +1,7 @@
 <span class="back"></span>
 <section id="chat_container">
     <div class="menuBackground menu_container">
-        <div class="menu_options menu_option_hide">
+        <div class="menu_options menu_option_toggle">
             <div class="prof">
                 <h5>Profile</h5>
                 <i class="menu_dots fas fa-times vertical-center"></i>
@@ -16,8 +16,8 @@
 
         </div>
     </div>
-    <div class="row h-100">
-        <div class="col-lg-3 col-md-4 col-sm-5 col-9 border-right pr-0 chat_list_wrapper">
+    <div class="row bugFix">
+        <div class="col-lg-3 col-md-4 col-sm-5 col-9 border-right p-0 chat_list_wrapper">
             <div class="chat_nav">
                 <div class="nav_data m-auto vertical-center border-bottom">
                     <img class="profile_thumb" src="/images/profiles/female.jpg" alt="profile Image">
@@ -103,12 +103,12 @@
         <div class="col-lg-9 col-md-8 col-12 p-0">
             {{!-- chatter profile nav --}}
             <div class="chatting_profile border-bottom">
-                <div class="m-auto vertical-center pl-md-4 pl-5">
+                <div class="chatter_nav m-auto vertical-center pl-4">
                     <div class="d-inline-block align-middle">
                         <img class="chatter_profile_thumb" src="/images/profiles/male.jpg" alt="profile Image">
                     </div>
-                    <div class="d-inline-block align-middle">
-                        <div class="friend_data_thumb m-auto pl-2">
+                    <div class="d-inline-block align-middle mt-1">
+                        <div class="friend_data_thumb m-auto pl-3">
                             <h5>Matt</h5>
                             <div class="online">
                                 <span class="online_green"></span>
@@ -118,9 +118,11 @@
                     </div>
                 </div>
                 {{!-- paperclip --}}
-                <i class="chat_nav_pc fas fa-paperclip mr-5 d-md-block d-none"></i>
-                <i class="chat_nav_pc m_chats fas fa-comments mr-5 d-md-none d-block"></i>
-                <i class="chat_nav_pc m_menu fas fa-ellipsis-v vertical-center d-md-none d-block"></i>
+                <div class="options_chatter vertical-center">
+                    <i class="chat_nav_pc fas fa-paperclip mr-5 d-md-block d-none"></i>
+                    <i class="chat_nav_pc m_chats fas fa-comments mr-5 d-md-none d-block"></i>
+                    <i class="chat_nav_pc m_menu fas fa-ellipsis-v d-md-none d-block"></i>
+                </div>
             </div>
 
             {{!-- chatting area --}}

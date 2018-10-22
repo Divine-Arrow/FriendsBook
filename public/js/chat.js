@@ -17,7 +17,7 @@ $(document).ready(() => {
     });
     // reusable function
     const toogleChatMenu = () => {
-        $(".menu_options").toggleClass("menu_option_hide");
+        $(".menu_options").toggleClass("menu_option_toggle");
         $(".back").toggleClass("back_toggle");
     }
 
@@ -35,7 +35,7 @@ $(document).ready(() => {
     });
     // menu for mobile
     $(".m_menu").click(() => {
-        $(".menu_options").toggleClass("menu_option_hide");
+        $(".menu_options").toggleClass("menu_option_toggle");
         $(".back").toggleClass("back_toggle");
     })
 

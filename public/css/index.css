@@ -484,10 +484,17 @@ input:focus {
     height: 100vh;
 }
 
+.bugFix {
+    width: 100vw;
+    height: 100vh;
+    margin-left: 0px;
+}
+
 #chat_container ul {
     list-style-type: none;
     padding-left: 0px;
     height: 90vh;
+    margin-bottom: 0rem;
 }
 
 #chat_container ul li {
@@ -503,7 +510,7 @@ input:focus {
     background-color: #cffdff;
 }
 
-.chat_nav {
+.chat_nav, .chatter_nav {
     background-color: #eeeeee;
     height: 4rem;
     width: 100%;
@@ -594,19 +601,19 @@ input:focus {
     font-size: 2rem;
     position: absolute;
     top: 1rem;
-    right: 3rem;
-    color: #7c7c7c;
+    right: 2rem;
+    color: #909090;
     cursor: pointer;
 }
 
 /* message area */
 
 .message_area {
-    height: 90vh;
-    width: 98.45%;
+    height: 92vh;
+    width: 100%;
     padding: 1rem 2.5rem;
     background-color: #cae9eb;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .message {
@@ -621,7 +628,7 @@ input:focus {
 .message.sent {
     float: right;
     border: 1.1px solid #cacaca;
-    border-radius: 30px 0px 5px 30px;
+    border-radius: 0px 0px 5px 5px;
     background-color: white;
     box-shadow: -4px 4px 13px 2px rgba(65, 255, 235, 0.15);
 }
@@ -645,7 +652,7 @@ input:focus {
 }
 
 .inner_right_corner {
-    width: 18px;
+    width: 17px;
     height: 17px;
     position: absolute;
     left: 0px;
@@ -660,7 +667,7 @@ input:focus {
     width: 20px;
     height: 20px;
     position: absolute;
-    left: -20px;
+    left: -19px;
     top: 0px;
     -webkit-clip-path: polygon(100% 0, 0 0, 100% 70%);
     clip-path: polygon(100% 0, 0 0, 100% 70%);
@@ -688,8 +695,9 @@ input:focus {
     background-color: white;
     position: absolute;
     bottom: 0px;
-    left: 4px;
+    left: 0px;
     min-width: 100%;
+    box-sizing: content-box;
     border: solid 2px #13988a;
     box-shadow: 0px -5px 7px 3px rgba(127, 255, 232, 0.18);
     display: flex;
@@ -725,21 +733,18 @@ input:focus {
 /* scroll bar */
 
 .message_area::-webkit-scrollbar-track {
-    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
     background-color: transparent;
     border-radius: 10px;
-
+    position: relative;
 }
 
 .message_area::-webkit-scrollbar {
     width: 6px;
-    background-color: transparent;
-}
+    background-color: transparent;}
 
 .message_area::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #0f7cff;
-}
+    background-color: #0f7cff;}
 
 .back {
     position: fixed;
@@ -777,9 +782,9 @@ input:focus {
     height: 100vh;
     background-color: #d1e6ff;
     border-right: solid 2px #0f7cff;
-    box-shadow: 4px 0px 20px 5px rgba(0, 0, 0, 0.2);
     z-index: 1;
     transition: cubic-bezier(0.05, 0.1, 0.51, 1.11) all 400ms;
+    box-shadow: 4px 0px 20px 5px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -795,8 +800,9 @@ input:focus {
     font-size: 2rem;
 }
 
-.menu_option_hide {
+.menu_option_toggle {
     left: -17rem !important;
+    box-shadow: none;
 }
 
 .menu_options ul li {
