@@ -7,6 +7,17 @@
     font-weight: 100;
 }
 
+.fas:hover, .fa:hover {
+    transition: ease all 200ms;
+}
+.fas:hover, .fa:hover {
+    color: #358df9d4 !important;
+}
+
+.menu_dots.fas.fa-times:hover {
+    color: #f12828 !important;
+}
+
 /* loader */
 
 .loader_container {

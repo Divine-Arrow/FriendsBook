@@ -28,6 +28,10 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
+app.get('/find', (req, res) => {
+    res.render('find');
+});
+
 app.get('/chat', (req, res) => {
     res.render('chat');
 });
