@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="row h-100">
-        <div class="col-lg-3 col-md-4 col-sm-5 border-right pr-0">
+        <div class="col-lg-3 col-md-4 col-sm-5 col-9 border-right pr-0 chat_list_wrapper">
             <div class="chat_nav">
                 <div class="nav_data m-auto vertical-center border-bottom">
                     <img class="profile_thumb" src="/images/profiles/female.jpg" alt="profile Image">
@@ -26,6 +26,7 @@
                     </div>
                     <div class="float-right">
                         <i class="menu_dots fas fa-ellipsis-v vertical-center"></i>
+                        <i class="mobile_menu fas fa-times vertical-center d-md-none d-block"></i>
                     </div>
                 </div>
             </div>
@@ -99,10 +100,10 @@
                 </ul>
             </div>
         </div>
-        <div class="col-lg-9 col-md-8 col-sm-7 p-0">
+        <div class="col-lg-9 col-md-8 col-12 p-0">
             {{!-- chatter profile nav --}}
             <div class="chatting_profile border-bottom">
-                <div class="m-auto vertical-center pl-4">
+                <div class="m-auto vertical-center pl-md-4 pl-5">
                     <div class="d-inline-block align-middle">
                         <img class="chatter_profile_thumb" src="/images/profiles/male.jpg" alt="profile Image">
                     </div>
@@ -117,7 +118,9 @@
                     </div>
                 </div>
                 {{!-- paperclip --}}
-                <i class="chat_nav_pc fas fa-paperclip"></i>
+                <i class="chat_nav_pc fas fa-paperclip mr-5 d-md-block d-none"></i>
+                <i class="chat_nav_pc m_chats fas fa-comments mr-5 d-md-none d-block"></i>
+                <i class="chat_nav_pc m_menu fas fa-ellipsis-v vertical-center d-md-none d-block"></i>
             </div>
 
             {{!-- chatting area --}}
@@ -240,10 +243,14 @@
 
                 {{!-- chat input area --}}
 
-                <div class="input_area form-row">
+                {{!-- <div class="input_area form-row">
                     <textarea class="input_field_chat" name="" id="" cols="30" rows="10" fixed></textarea>
                     <button>Send</button>
-                </div>
+                </div> --}}
+                <form class="input_area form-row" action="none" method="POST">
+                    <textarea class="input_field_chat" name="message"></textarea>
+                    <button type="submit">Send</button>
+                </form>
             </div>
         </div>
     </div>

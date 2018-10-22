@@ -549,6 +549,7 @@ input:focus {
 .friend_data_thumb p {
     margin-bottom: 0px;
     font-size: 0.74rem;
+    margin-top: 0.3rem;
 }
 
 .online_green {
@@ -691,11 +692,11 @@ input:focus {
     min-width: 100%;
     border: solid 2px #13988a;
     box-shadow: 0px -5px 7px 3px rgba(127, 255, 232, 0.18);
+    display: flex;
 }
 
 .input_area textarea {
-    max-width: 90%;
-    width: 90%;
+    flex-basis: 85%;
     height: 3rem;
     border: none;
     resize: none;
@@ -706,12 +707,13 @@ input:focus {
     box-shadow: none !important;
 }
 
-.input_area textarea:focus-within {
+/* .input_area textarea:focus .input_area{ */
+.input_area:focus-within {
     border-color: #0f7cff !important;
 }
 
 .input_area button {
-    width: 5.1rem;
+    flex-basis: 15%;
     border: none;
     color: white;
     background-color: #13988a;
@@ -756,10 +758,15 @@ input:focus {
     z-index: 1;
 }
 
-.menu_dots {
+.menu_dots,
+.mobile_menu {
     color: rgb(119, 119, 119);
     cursor: pointer;
     font-size: 2rem;
+}
+
+.mobile_menu {
+    color: #ff9595;
 }
 
 .menu_options {
@@ -779,9 +786,10 @@ input:focus {
 .prof {
     position: relative;
 }
+
 .prof .menu_dots {
     position: absolute;
-    top:0px;
+    top: 0px;
     right: 2rem;
     color: #ff9595;
     font-size: 2rem;
@@ -848,6 +856,32 @@ input:focus {
     }
 }
 
+/* chatapp */
+@media only screen and (min-width:0px)and (max-width:756px) {
+    .chat_list_wrapper {
+        position: fixed;
+        top: 0rem;
+        left: -100%;
+        z-index: 1;
+        padding-left: 0px;
+        transition: ease all 300ms;
+    }
+
+    .m_chats_hider {
+        left: 0rem;
+        box-shadow: 3px 3px 8px 4px rgba(141, 141, 141, 0.21);
+    }
+
+    .friendsList {
+        box-shadow: none;
+    }
+
+    .chat_nav .menu_dots {
+        display: none;
+    }
+
+}
+
 @media only screen and (min-width:576px)and (max-width:992px) {
 
     /* nav */
@@ -891,6 +925,16 @@ input:focus {
 
     .hide-xs {
         display: none;
+    }
+
+    /* input field chat */
+
+    .input_area textarea {
+        flex-basis: 76%;
+    }
+
+    .input_area button {
+        flex-basis: 24%;
     }
 }
 
@@ -1023,5 +1067,16 @@ input:focus {
     /* thanks */
     .thanks_container p {
         width: 100% !important;
+    }
+
+
+    /* input  */
+
+    .input_area textarea {
+        flex-basis: 75%;
+    }
+
+    .input_area button {
+        flex-basis: 25%;
     }
 }
