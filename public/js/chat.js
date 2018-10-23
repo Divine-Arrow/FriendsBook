@@ -37,8 +37,4 @@ $(document).ready(() => {
         $(".menu_options").toggleClass("menu_option_toggle");
         $(".back").toggleClass("back_toggle");
     })
-
-
-
-
 });

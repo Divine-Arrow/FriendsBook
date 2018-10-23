@@ -925,6 +925,18 @@ input:focus {
     .chat_nav .menu_dots {
         display: none;
     }
+    /* form input for mobile */
+
+    form.input_area.form-row {
+        position: fixed;
+        bottom: 0px;
+        right: 0px;
+        width: 100%;
+    }
+
+    .message_container {
+        margin-bottom: 3rem;
+    }
 }
 
 @media only screen and (min-width:576px)and (max-width:992px) {
