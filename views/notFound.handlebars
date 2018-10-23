@@ -1,0 +1,22 @@
+<div class="thanks_container">
+    <h5 class="text-center" style="font-size: 21vw; color: #4d4d4d;">4 0 4</h5>
+    <p class="text-center w-75 mx-auto px-sm-0 px-3">Cant find this page. Redirecting to another page.. please wait.</p>
+    <a href="/">
+        <button type="button" class="btn btn-primary px-4 py-2 d-block mx-auto">Redirecting in <span class="badge badge-light ml-2">4</span></button>
+    </a>
+</div>
+        
+<script>
+    $(document).ready(() => {
+        var counter = 4;
+        $("nav").remove();
+        setInterval(() => {
+            $(".thanks_container button span").text(counter);
+            counter--;
+            if (counter === 0)
+                $(".thanks_container button").css("background-color", "#0062f8");
+            if (counter < 0)
+                location.pathname = "/login"
+        }, 1000);
+    });
+</script>

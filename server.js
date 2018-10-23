@@ -1,6 +1,8 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 
+const routes = require('./server/routes');
+
 const app = express(),
     port = process.env.PORT || 3000;
 
@@ -14,31 +16,7 @@ app.set('view engine', 'handlebars');
 
 
 // routes
-app.get('/', (req, res) => {
-    res.render('index', {
-        homepage: true
-    });
-});
-
-app.get('/register', (req, res) => {
-    res.render('register');
-});
-
-app.get('/login', (req, res) => {
-    res.render('login');
-});
-
-app.get('/find', (req, res) => {
-    res.render('find');
-});
-
-app.get('/chat', (req, res) => {
-    res.render('chat');
-});
-
-app.get('/thanks', (req, res) => {
-    res.render('thanks');
-});
+app.use('/', routes);
 
 
 app.listen(port, () => {
