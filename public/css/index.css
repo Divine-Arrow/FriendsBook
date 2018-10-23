@@ -600,6 +600,7 @@ input:focus {
 }
 
 .chatting_profile {
+    flex-shrink: 0;
     height: 4rem;
     background-color: #eeeeee;
     box-shadow: 7px 5px 8px 4px rgba(163, 255, 239, 0.25);
@@ -624,9 +625,10 @@ input:focus {
 /* message area */
 
 .message_area {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    height: 88vh;
+    height: 89.4vh;
     width: 100%;
     background-color: #cae9eb;
 }
@@ -880,8 +882,13 @@ input:focus {
     text-decoration: none !important;
 }
 
+/* search */
+.search_friend {
+    width: 50%;
+    margin-left: auto;
+}
+
 /* media query */
-@media only screen and (min-width: 1140px) {}
 
 @media only screen and (min-width:992px)and (max-width:1140px) {
     .wrapper {
@@ -1095,5 +1102,10 @@ input:focus {
     /* thanks */
     .thanks_container p {
         width: 100% !important;
+    }
+
+    /* search */
+    .search_friend {
+        width: 100%;
     }
 }
