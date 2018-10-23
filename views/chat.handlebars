@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="row bugFix">
-        <div class="col-lg-3 col-md-4 col-sm-5 col-9 border-right p-0 chat_list_wrapper">
+        <div class="col-lg-3 col-md-4 col-sm-5 col-9 p-0 chat_list_wrapper">
             <div class="chat_nav">
                 <div class="nav_data m-auto vertical-center border-bottom">
                     <img class="profile_thumb" src="/images/profiles/female.jpg" alt="profile Image">
@@ -26,7 +26,7 @@
                     </div>
                     <div class="float-right">
                         <i class="menu_dots fas fa-ellipsis-v vertical-center"></i>
-                        <i class="mobile_menu fas fa-times vertical-center d-md-none d-block"></i>
+                        <i class="mobile_menu fas fa-times mr-2 vertical-center d-md-none d-block"></i>
                     </div>
                 </div>
             </div>
@@ -233,22 +233,16 @@
                     </div>
                     {{!-- chat --}}
                     <div class="message sent">
-                        <p>Hello</p>
+                        <p>second last</p>
                         <span class="right_corner"><span class="inner_right_corner"></span></span>
                     </div>
 
                     <div class="message recieved">
                         <span class="left_corner"><span class="inner_left_corner"></span></span>
-                        <p>Hey</p>
+                        <p>Last message</p>
                     </div>
                 </div>
 
-                {{!-- chat input area --}}
-
-                {{!-- <div class="input_area form-row">
-                    <textarea class="input_field_chat" name="" id="" cols="30" rows="10" fixed></textarea>
-                    <button>Send</button>
-                </div> --}}
                 <form class="input_area form-row" action="none" method="POST">
                     <textarea class="input_field_chat" name="message"></textarea>
                     <button type="submit">Send</button>

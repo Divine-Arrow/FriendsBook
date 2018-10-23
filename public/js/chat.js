@@ -4,7 +4,6 @@ $(document).ready(() => {
     $("#fotter_bottom").remove();
     $("body").css('overflow', 'hidden');
 
-
     /* Menu bar chat */
     $(".menu_dots").click(() => {
         toogleChatMenu();
