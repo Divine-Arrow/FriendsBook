@@ -907,43 +907,6 @@ input:focus {
     }
 }
 
-/* chatapp */
-@media only screen and (min-width:0px)and (max-width:756px) {
-    .chat_list_wrapper {
-        position: fixed;
-        top: 0rem;
-        left: -100%;
-        z-index: 1;
-        padding-left: 0px;
-        transition: ease all 300ms;
-    }
-
-    .m_chats_hider {
-        left: 0rem;
-        box-shadow: 3px 3px 8px 4px rgba(141, 141, 141, 0.21);
-    }
-
-    .friendsList {
-        box-shadow: none;
-    }
-
-    .chat_nav .menu_dots {
-        display: none;
-    }
-    /* form input for mobile */
-
-    form.input_area.form-row {
-        position: fixed;
-        bottom: 0px;
-        right: 0px;
-        width: 100%;
-    }
-
-    .message_container {
-        margin-bottom: 3rem;
-    }
-}
-
 @media only screen and (min-width:576px)and (max-width:992px) {
 
     /* nav */
@@ -1125,4 +1088,75 @@ input:focus {
     .search_friend {
         width: 100%;
     }
+}
+
+/* coustomised menu bar */
+@media only screen and (min-width:0px)and (max-width:992px) {
+    .nav_menu {
+        background-color: #f6fbfe;
+        height: 100vh;
+        width: 100%;
+        position: fixed;
+        display: block;
+        transition: ease all 0.3s;
+        right: -100vw;
+        top: 3rem;
+    }
+
+    .nav_show {
+        right: 0px;
+    }
+
+    .nav_menu ul {
+        margin-top: 2rem;
+    }
+    
+    .nav_menu ul li:not(:last-child) {
+        margin: 0.05rem 1rem;
+        font-size: 1.5rem;
+    }
+    
+    .nav_menu ul li .nav-item.user_btn {
+        margin-left: 0px;
+        margin-top: 1rem;
+    }
+}
+
+/* chatapp */
+@media only screen and (min-width:0px)and (max-width:756px) {
+    .chat_list_wrapper {
+        position: fixed;
+        top: 0rem;
+        left: -100%;
+        z-index: 1;
+        padding-left: 0px;
+        transition: ease all 300ms;
+    }
+
+    .m_chats_hider {
+        left: 0rem;
+        box-shadow: 3px 3px 8px 4px rgba(141, 141, 141, 0.21);
+    }
+
+    .friendsList {
+        box-shadow: none;
+    }
+
+    .chat_nav .menu_dots {
+        display: none;
+    }
+
+    /* form input for mobile */
+
+    form.input_area.form-row {
+        position: fixed;
+        bottom: 0px;
+        right: 0px;
+        width: 100%;
+    }
+
+    .message_container {
+        margin-bottom: 3rem;
+    }
+
 }
