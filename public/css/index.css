@@ -176,6 +176,11 @@ a.nav-item.nav-link {
     color: white !important;
 }
 
+.navbar_menu_icon {
+    background-image: none !important;
+    font-size: 1.6rem;
+}
+
 .color_other {
     color: #2179ff !important;
 }
