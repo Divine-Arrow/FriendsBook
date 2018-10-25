@@ -1146,4 +1146,8 @@ input:focus {
         margin-top: 1rem;
         margin-left: 0px;
     }
+    .nav_menu_back {
+        opacity: 0.6;
+        z-index: 3;
+    }
 }

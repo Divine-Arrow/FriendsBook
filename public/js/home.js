@@ -26,6 +26,7 @@ $(document).ready(() => {
 //  menu click
 $('.navbar-toggler').on('click', () => {
     $('.navbar').toggleClass('navActiveToggle');
+    $('.back').toggleClass('nav_menu_back');
 })
 
 

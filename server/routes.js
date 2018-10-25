@@ -1,5 +1,5 @@
 const Router = require('express').Router();
-
+const passport = require('passport');
 
 // routes
 Router.get('/', (req, res) => {
@@ -8,9 +8,12 @@ Router.get('/', (req, res) => {
     });
 });
 
+// Resiter
 Router.get('/register', (req, res) => {
     res.render('register');
 });
+
+Router.post('/register', passport.authenticate('local-signup'));
 
 Router.get('/login', (req, res) => {
     res.render('login');
