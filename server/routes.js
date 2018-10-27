@@ -26,10 +26,16 @@ Router.get('/login', (req, res) => {
     // req.flash('danger', 'something went wrong');
     res.render('login', {
         flash: {
-            success: req.flash('success')
+            success: req.flash('success'),
+            danger: req.flash('danger')
         }
     });
 });
+
+Router.post('/login', passport.authenticate('local-login', {
+    successRedirect: '/chat',
+    failureRedirect: '/login'
+}));
 
 Router.get('/find', (req, res) => {
     res.render('find');
@@ -41,6 +47,11 @@ Router.get('/chat', (req, res) => {
 
 Router.get('/thanks', (req, res) => {
     res.render('thanks');
+});
+
+Router.get('/logout', (req, res) => {
+    req.logOut();
+    res.redirect('/login');
 });
 
 Router.get('*', (req, res) => {
