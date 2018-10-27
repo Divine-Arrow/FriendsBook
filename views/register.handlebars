@@ -3,12 +3,20 @@
     <div class="wrapper mt-5">
         <div class="row m-auto">
             <div class="col-12 m-auto">
+                {{!-- alert --}}
+                {{#if flash.success}}
+                <div class="alert alert-success text-center mx-auto" role="alert" style="width:350px; transition: ease all 300ms">
+                    {{flash.success}}
+                </div>
+                {{/if}}
+
                 {{!-- flash --}}
                 {{#if flash.danger}}
-                <div class="alert alert-danger text-center mx-auto" role="alert" style="width:350px">
+                <div class="alert alert-danger text-center mx-auto" role="alert" style="width:350px; transition: ease all 300ms">
                     {{flash.danger}}
                 </div>
                 {{/if}}
+
                 <div class="text-center mb-4">
                     <h3>Register</h3>
                     <p class="feature_main_para">Register for free, your information is save with us.</p>
@@ -21,6 +29,12 @@
                         <div class="oauth google">
                             <a href="/auth/google" class="btn">Google</a>
                             <i class="fab fa-google-plus-g"></i>
+                        </div>
+                        <div class="alert_box alert alert-danger alert-dismissible fade show shadow-sm rounded" role="alert">
+                            <p>error</p>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <i class="fas fa-times noHover"></i>
+                            </button>
                         </div>
                     </div>
                     <h5>or</h5>
@@ -49,3 +63,24 @@
         </div>
     </div>
 </section>
+<script>
+    // register conform password check
+    $('[name="confirmPassword"]').focusin(() => {
+        $('form button').attr("disabled", "disabled");
+    });
+    $('[name="confirmPassword"]').on('input', () => {
+        $('form button').attr("disabled", "disabled");
+        const pass = $('[name="password"]').val();
+        const confirmPass = $('[name="confirmPassword"]').val();
+        if (pass.length < 6 || confirmPass < 6) {
+            $(".alert_box").css("visibility", "visible").css("opacity", "1");
+            $(".alert_box p").text("Password Length must be 6");
+        } else if (pass !== confirmPass) {
+            $(".alert_box").css("visibility", "visible").css("opacity", "1");
+            $(".alert_box p").text("password field must be same");
+        } else if (pass === confirmPass) {
+            $(".alert_box").css("visibility", "hidden").css("opacity", "0").text("no error");
+            $('form button').removeAttr("disabled");
+        }
+    });
+</script>

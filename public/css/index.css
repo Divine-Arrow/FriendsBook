@@ -12,7 +12,7 @@
     transition: ease all 200ms;
 }
 
-.fas:hover,
+.fas:hover:not(.noHover),
 .fa:hover {
     color: #358df9d4 !important;
 }
@@ -453,6 +453,7 @@ input:focus {
 /* oauth */
 .oauth_container {
     margin-bottom: 1.6rem;
+    position: relative;
 }
 
 .oauth {
@@ -892,6 +893,26 @@ input:focus {
     width: 50%;
     margin-left: auto;
 }
+
+/* alert box */
+.alert_box {
+    width: 350px;
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    visibility: hidden;
+    opacity: 0;
+    text-align: center;
+    transition: ease all 300ms;
+}
+
+.alert_box p {
+    margin-bottom: 0px;
+    color: #721c24 !important;
+    font-weight: 900 !important;
+}
+
 
 /* media query */
 
