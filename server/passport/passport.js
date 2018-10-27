@@ -31,6 +31,10 @@ passport.use('local-signup', new LocalStrategy({
             // create a new user
             var newUser = User(bodyData);
             if (bodyData.password === bodyData.confirmPassword) {
+
+                if (password.length < 6)
+                    return done(null, null, req.flash('danger', 'password length must be more than 5'));
+
                 newUser.password = newUser.generateHash(bodyData.password);
                 newUser.save().then((user) => {
                     done(null, user.id, req.flash('success', 'Signed up successfully.'));
