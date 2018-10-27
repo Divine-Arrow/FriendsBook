@@ -10,13 +10,25 @@ Router.get('/', (req, res) => {
 
 // Resiter
 Router.get('/register', (req, res) => {
-    res.render('register');
+    res.render('register', {
+        flash: {
+            danger: req.flash('danger')
+        }
+    });
 });
 
-Router.post('/register', passport.authenticate('local-signup'));
+Router.post('/register', passport.authenticate('local-signup', {
+    successRedirect: '/login',
+    failureRedirect: '/register'
+}));
 
 Router.get('/login', (req, res) => {
-    res.render('login');
+    // req.flash('danger', 'something went wrong');
+    res.render('login', {
+        flash: {
+            success: req.flash('success')
+        }
+    });
 });
 
 Router.get('/find', (req, res) => {
@@ -31,7 +43,7 @@ Router.get('/thanks', (req, res) => {
     res.render('thanks');
 });
 
-Router.get('*', (req,res) =>{
+Router.get('*', (req, res) => {
     res.render('notFound');
 });
 

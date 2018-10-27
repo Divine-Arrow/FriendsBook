@@ -3,6 +3,12 @@
     <div class="wrapper mt-5">
         <div class="row m-auto">
             <div class="col-12 m-auto">
+                {{!-- flash --}}
+                {{#if flash.danger}}
+                <div class="alert alert-danger text-center mx-auto" role="alert" style="width:350px">
+                    {{flash.danger}}
+                </div>
+                {{/if}}
                 <div class="text-center mb-4">
                     <h3>Register</h3>
                     <p class="feature_main_para">Register for free, your information is save with us.</p>

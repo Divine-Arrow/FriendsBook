@@ -3,6 +3,13 @@
     <div class="wrapper mt-5">
         <div class="row m-auto">
             <div class="col-12 m-auto">
+                {{!-- alert --}}
+                {{#if flash.success}}
+                <div class="alert alert-success text-center mx-auto" role="alert" style="width:350px">
+                    {{flash.success}}
+                </div>
+                {{/if}}
+
                 <div class="text-center mb-4">
                     <h3>Login</h3>
                     <p class="feature_main_para">Login with you preference, your information is save with us.</p>

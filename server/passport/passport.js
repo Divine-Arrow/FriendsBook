@@ -1,8 +1,19 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const User = require('../models/user');
 const _ = require("lodash");
 
-const User = require("../models/user");
+passport.serializeUser((userId, done) => {
+    done(null, userId)
+});
+
+passport.deserializeUser((id, done) => {
+    User.findById(id).then((user) => {
+        done(null, user)
+    }).catch((e) => {
+        if (e) console.log('error at deserialize');
+    })
+});
 
 passport.use('local-signup', new LocalStrategy({
     usernameField: 'email',
@@ -19,12 +30,18 @@ passport.use('local-signup', new LocalStrategy({
             var newUser = User(bodyData);
             if (bodyData.password === bodyData.confirmPassword) {
                 newUser.password = newUser.generateHash(bodyData.password);
+                newUser.save().then((user) => {
+                    done(null, user.id, req.flash('success', 'Signed up successfully.'));
+                }).catch((e) => {
+                    if (e.code === 11000) {
+                        console.log("email already exist");
+                    }
+                    console.log(e);
+                });
+            } else {
+                done(null, undefined, req.flash('danger', 'Password fields does not match.'));
             }
-            newUser.save().then((response) => {
-                console.log("response: ",response);
-            }).catch((e) => {
-                console.log(e);
-            });
+
         }
     }).catch((e) => {
         console.log(e);
