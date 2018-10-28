@@ -1,10 +1,13 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const GoogleStrategy = require("passport-google-oauth20");
+const FacebookStrategy = require("passport-facebook");
 const User = require('../models/user');
+const keys = require('../keys/keys');
 const _ = require("lodash");
 
 passport.serializeUser((userId, done) => {
-    done(null, userId)
+    done(null, userId);
 });
 
 passport.deserializeUser((id, done) => {
@@ -36,7 +39,8 @@ passport.use('local-signup', new LocalStrategy({
 
                 newUser.password = newUser.generateHash(bodyData.password);
                 newUser.save().then((user) => {
-                    return done(null, user.id, req.flash('success', 'Signed up successfully.'));
+                    if (user)
+                        return done(null, user.id, req.flash('success', 'Signed up successfully.'));
                 }).catch((e) => {
                     if (e.code === 11000) {
                         console.log("email already exist");
@@ -77,3 +81,15 @@ passport.use('local-login', new LocalStrategy({
             return done(null, undefined, req.flash('danger', 'Something went wrong.'))
     });
 }));
+
+// google oauth
+passport.use(new GoogleStrategy({
+    clientID: keys.google.clientID,
+    clientSecret: keys.google.clientSecret,
+    callbackURL: '/oauth/google/redirect',
+    failureRedirect: '/login'
+}, (accessToken, refreshToken, profile, done) => {
+    console.log(profile);
+}));
+
+// https://da-friendsbook.herokuapp.com/google/redirect

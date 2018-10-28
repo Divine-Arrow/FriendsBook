@@ -1,46 +1,41 @@
-<!-- form -->
 <section id="register mt-5">
     <div class="wrapper mt-5">
         <div class="row m-auto">
             <div class="col-12 m-auto">
                 {{!-- alert --}}
+
                 {{#if flash.success}}
                 <div class="alert alert-success text-center mx-auto" role="alert" style="width:350px; transition: ease all 300ms">
                     {{flash.success}}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <i class="fas fa-times noHover"></i>
-                    </button>
-                </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fas fa-times noHover"></i></button></div>
                 {{/if}}
 
                 {{!-- flash --}}
+
                 {{#if flash.danger}}
                 <div class="alert alert-danger text-center mx-auto" role="alert" style="width:350px; transition: ease all 300ms">
                     {{flash.danger}}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <i class="fas fa-times noHover"></i>
-                    </button>
-                </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fas fa-times noHover"></i></button></div>
                 {{/if}}
 
                 <div class="text-center mb-4">
                     <h3>Register</h3>
-                    <p class="feature_main_para">Register for free, your information is save with us.</p>
+                    <p class="feature_main_para">Register for free,
+                        your information is save with us.</p>
                     <p class="d-sm-none">Register for free.</p>
                     <div class="oauth_container">
-                        <div class="oauth facebook">
-                            <a href="/auth/google" class="btn">Facebook</a>
-                            <i class="fab fa-facebook-f"></i>
-                        </div>
-                        <div class="oauth google">
-                            <a href="/auth/google" class="btn">Google</a>
-                            <i class="fab fa-google-plus-g"></i>
-                        </div>
+
+                        <a href="/oauth/facebook" class="oauth facebook">
+                            <div class="btn">Facebook</div><i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="/oauth/google" class="oauth google">
+                            <div class="btn">Google</div><i class="fab fa-google-plus-g"></i>
+                        </a>
+
+                        {{!-- alert box for verif. local --}}
                         <div class="alert_box alert alert-danger alert-dismissible fade show shadow-sm rounded" role="alert">
-                            <p>error</p>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <i class="fas fa-times noHover"></i>
-                            </button>
+                            <p>error</p><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i
+                                    class="fas fa-times noHover"></i></button>
                         </div>
                     </div>
                     <h5>or</h5>
@@ -49,21 +44,16 @@
             <div class="col-lg-3 col-sm-6 col-8 m-auto">
                 <form action="/register" method="POST" class="text-center">
                     <div class="form-row">
-                        <div class="form-group col-12">
-                            <input name="name" type="text" class="form-control" placeholder="Enter full name">
-                        </div>
-                        <div class="form-group col-12">
-                            <input name="email" type="email" class="form-control" placeholder="Email" required>
-                        </div>
-                        <div class="form-group col-12">
-                            <input name="password" type="password" class="form-control" placeholder="Password" required>
-                        </div>
-                        <div class="form-group col-12">
-                            <input name="confirmPassword" type="password" class="form-control" placeholder="Confirm Password" required>
-                        </div>
+                        <div class="form-group col-12"><input name="name" type="text" class="form-control" placeholder="Enter full name"></div>
+                        <div class="form-group col-12"><input name="email" type="email" class="form-control"
+                                placeholder="Email" required></div>
+                        <div class="form-group col-12"><input name="password" type="password" class="form-control"
+                                placeholder="Password" required></div>
+                        <div class="form-group col-12"><input name="confirmPassword" type="password" class="form-control"
+                                placeholder="Confirm Password" required></div>
                     </div>
-                    <p>Already have account? <a href="/login">Log in</a></p>
-                    <button type="submit" class="btn user_btn ml-auto">Sign Up</button>
+                    <p>Already have account? <a href="/login">Log in</a></p><button type="submit" class="btn user_btn ml-auto">Sign
+                        Up</button>
                 </form>
             </div>
         </div>
@@ -71,24 +61,33 @@
 </section>
 <script>
     $(document).ready(() => {
-        // register conform password check
-        $('input').focusin(() => {
-            $('form button').attr("disabled", "disabled");
-        });
-        $('[name="confirmPassword"],[name="password"]').on('input', () => {
-            $('form button').attr("disabled", "disabled");
-            const pass = $('[name="password"]').val();
-            const confirmPass = $('[name="confirmPassword"]').val();
-            if (pass.length < 6 || confirmPass < 6) {
-                $(".alert_box").css("visibility", "visible").css("opacity", "1");
-                $(".alert_box p").text("Password Length must be 6");
-            } else if (pass !== confirmPass) {
-                $(".alert_box").css("visibility", "visible").css("opacity", "1");
-                $(".alert_box p").text("password field must be same");
-            } else if (pass === confirmPass) {
-                $(".alert_box").css("visibility", "hidden").css("opacity", "0").text("no error");
-                $('form button').removeAttr("disabled");
-            }
-        });
-    });
+
+            // register conform password check
+            $('input').focusin(() => {
+                $('form button').attr("disabled", "disabled");
+            });
+
+            $('[name="confirmPassword"], [name="password"]').on('input', () => {
+                    $('form button').attr("disabled", "disabled");;
+                    $('form button').addClass("show");;
+                    $(".alert_box").css("visibility", "visible").css("opacity", "1");
+                    const pass = $('[name="password"]').val();
+                    const confirmPass = $('[name="confirmPassword"]').val();
+
+                    if (pass.length < 6 || confirmPass < 6) {
+                        $(".alert_box p").text("Password Length must be 6");
+                        $(".alert_box").css("visibility", "visible").css("opacity", "1");
+                    } else if (pass !== confirmPass) {
+                        $(".alert_box p").text("password field must be same");
+                        $(".alert_box").css("visibility", "visible").css("opacity", "1");
+                    } else if (pass === confirmPass) {
+                        $(".alert_box").css("visibility", "hidden").css("opacity", "0");
+                        $('form button').removeAttr("disabled");
+                    }
+                }
+
+            );
+        }
+
+    );
 </script>

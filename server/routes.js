@@ -1,6 +1,20 @@
 const Router = require('express').Router();
 const passport = require('passport');
 
+const authCheck = (req, res, next) => {
+    if (!req.isAuthenticated()) {
+        req.flash('danger', 'please login or register.');
+        return res.redirect('/login');
+    }
+    next();
+}
+
+const revAuthCheck = (req, res, next) => {
+    if (!req.isAuthenticated())
+        return next();
+    return res.redirect('/chat');
+}
+
 // routes
 Router.get('/', (req, res) => {
     res.render('index', {
@@ -9,7 +23,7 @@ Router.get('/', (req, res) => {
 });
 
 // Resiter
-Router.get('/register', (req, res) => {
+Router.get('/register', revAuthCheck, (req, res) => {
     res.render('register', {
         flash: {
             danger: req.flash('danger')
@@ -17,12 +31,15 @@ Router.get('/register', (req, res) => {
     });
 });
 
+// Register POST
 Router.post('/register', passport.authenticate('local-signup', {
-    successRedirect: '/login',
     failureRedirect: '/register'
-}));
+}), (req, res) => {
+    req.logout();
+    res.redirect('/login');
+});
 
-Router.get('/login', (req, res) => {
+Router.get('/login', revAuthCheck, (req, res) => {
     // req.flash('danger', 'something went wrong');
     res.render('login', {
         flash: {
@@ -37,20 +54,33 @@ Router.post('/login', passport.authenticate('local-login', {
     failureRedirect: '/login'
 }));
 
-Router.get('/find', (req, res) => {
+// oauth login
+
+// google
+Router.get('/oauth/google', passport.authenticate('google', {
+    scope: ['profile', 'email']
+}));
+// google redirect
+Router.get('/oauth/google/redirect', passport.authenticate('google'), (req, res) => {
+    res.redirect('/login');
+});
+
+
+Router.get('/find', authCheck, (req, res) => {
     res.render('find');
 });
 
-Router.get('/chat', (req, res) => {
+Router.get('/chat', authCheck, (req, res) => {
     res.render('chat');
 });
 
-Router.get('/thanks', (req, res) => {
+Router.get('/thanks', authCheck, (req, res) => {
     res.render('thanks');
 });
 
-Router.get('/logout', (req, res) => {
+Router.get('/logout', authCheck, (req, res) => {
     req.logOut();
+    req.flash('success', 'Loged out');
     res.redirect('/login');
 });
 

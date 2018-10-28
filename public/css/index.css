@@ -15,9 +15,9 @@
 .fas:hover:not(.noHover),
 .fa:hover {
     color: #358df9d4 !important;
-}c
+}
 
-.menu_dots.fas.fa-times:hover {
+c .menu_dots.fas.fa-times:hover {
     color: #f12828 !important;
 }
 
@@ -458,14 +458,17 @@ input:focus {
 
 .oauth {
     display: inline-block;
-    color: white;
+    color: white !important;
     border-radius: 3px;
     font-weight: bold;
     letter-spacing: 1px;
-    text-decoration: none;
+    text-decoration: none !important;
     overflow: hidden;
     height: 2.4rem;
     cursor: pointer;
+    text-decoration: none;
+    width: 8rem;
+    outline: none !important;
 }
 
 .oauth .btn {
@@ -480,14 +483,6 @@ input:focus {
 
 .oauth:not(:first-child) {
     margin-left: 1rem;
-}
-
-.oauth a {
-    text-decoration: none;
-    color: white;
-    width: 8rem;
-    outline: none !important;
-    display: block;
 }
 
 .facebook {
@@ -517,13 +512,17 @@ input:focus {
     margin-bottom: 0rem;
 }
 
+#chat_container ul a {
+    text-decoration: none !important;
+    color: #303030;
+}
+
 #chat_container ul li {
     width: 100%;
     border-bottom: solid 1px #eeeeee;
     padding: 0.65rem 1rem;
     cursor: pointer;
     font-weight: bold;
-    color: #303030;
 }
 
 #chat_container ul li:hover {
@@ -850,14 +849,26 @@ input:focus {
     border: none !important;
     transition: all 200ms;
 }
+.menu_options ul li a {
+    transition: all 200ms;
+    display: block;
+}
 
 .menu_options ul li:hover {
     background-color: #f5f5f5 !important
 }
 
-.menu_options ul li:hover:last-child {
+.menu_options ul li:hover a{
+    color: #6081ee !important
+}
+
+.menu_options ul li:hover:last-child{
     color: white !important;
-    background-color: #ff9595 !important
+    background-color: #ff9595 !important;
+}
+
+.menu_options ul li:hover:last-child a{
+    color: white !important;
 }
 
 .menu_options h5 {
@@ -1161,12 +1172,13 @@ input:focus {
         height: 2.5rem;
         padding: 0px;
         border-radius: 0px;
-        padding-top: 0.4rem !important; 
-        padding-bottom: 0.4rem !important; 
+        padding-top: 0.4rem !important;
+        padding-bottom: 0.4rem !important;
         line-height: 1.5rem;
         margin-top: 1rem;
         margin-left: 0px;
     }
+
     .nav_menu_back {
         opacity: 0.6;
         z-index: 3;

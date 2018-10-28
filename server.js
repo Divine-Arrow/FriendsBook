@@ -7,14 +7,16 @@ const flash = require("connect-flash");
 const session = require('express-session');
 
 const routes = require('./server/routes');
+const keys = require('./server/keys/keys');
 const passportSetup = require('./server/passport/passport');
 
 const app = express(),
     port = process.env.PORT || 3000;
 
-mongoose.connect("mongodb://localhost/friendsBook", {
+mongoose.connect(keys.mongo.database, {
     useNewUrlParser: true
 });
+
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
     extended: false
