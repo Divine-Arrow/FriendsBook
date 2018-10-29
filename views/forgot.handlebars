@@ -1,0 +1,46 @@
+<section id="register mt-5">
+    <div class="wrapper mt-5">
+        <div class="row m-auto">
+            <div class="col-12 m-auto">
+
+                {{!-- alert --}}
+                {{#if flash.success}}
+                <div class="alert alert-success text-center mx-auto" role="alert" style="width:350px; transition: ease all 300ms">
+                    {{flash.success}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fas fa-times noHover"></i></button></div>
+                {{/if}}
+
+                {{#if flash.danger}}
+                <div class="alert alert-danger text-center mx-auto" role="alert" style="width:350px; transition: ease all 300ms">
+                    {{flash.danger}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fas fa-times noHover"></i></button></div>
+                {{/if}}
+
+                <div class="text-center mb-4">
+                    {{!-- alert box for verif. local --}}
+                    <div class="alert_box alert alert-danger alert-dismissible fade show shadow-sm rounded" role="alert"
+                        style="position: relative;left: 50%;transform: translate(-50%, 0%);">
+                        <p>error</p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <i class="fas fa-times noHover"></i>
+                        </button>
+                    </div>
+                    <h3>Create Password</h3>
+                    <p class="feature_main_para">Create Your password, last step to gain access.</p>
+                    <p class="d-sm-none">Register for free.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-8 m-auto">
+                <form action="/forgot" method="POST" class="text-center">
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <input name="email" type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                    </div>
+                    <p>Already have account? <a href="/login">Log in</a></p>
+                    <button type="submit" class="btn user_btn ml-auto">Next</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
