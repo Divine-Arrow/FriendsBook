@@ -80,6 +80,7 @@ passport.use('local-login', new LocalStrategy({
             }
             if (result)
                 return done(null, user.id);
+            return done(null, null, req.flash('danger', 'wrong passwrod.. Try again.'));
         });
     }).catch((err) => {
         if (err)
