@@ -69,10 +69,15 @@ passport.use('local-login', new LocalStrategy({
         email
     }).then((user) => {
         if (!user)
-            return done(null, undefined, req.flash('danger', 'You are not registered.'))
+            return done(null, undefined, req.flash('danger', 'You are not registered.'));
         user.validHash(password, (err, result) => {
-            if (err)
+            if (err) {
+                if (err === 404) {
+                    // pass data to routes.js
+                    return done(null, null, req.flash('danger', `<a href="/createPass/${user.id}"><strong>forget</strong></a> password or use Oauth.`));
+                }
                 return done(null, undefined, req.flash('danger', err));
+            }
             if (result)
                 return done(null, user.id);
         });
@@ -87,9 +92,34 @@ passport.use(new GoogleStrategy({
     clientID: keys.google.clientID,
     clientSecret: keys.google.clientSecret,
     callbackURL: '/oauth/google/redirect',
+    passReqToCallback: true,
     failureRedirect: '/login'
-}, (accessToken, refreshToken, profile, done) => {
-    console.log(profile);
+}, (req, accessToken, refreshToken, profile, done) => {
+    User.findOne({
+        email: profile._json.emails[0].value
+    }).then((user) => {
+        if (user)
+            return done(null, user.id);
+        var newGUser = new User({
+            email: profile._json.emails[0].value,
+            gender: profile._json.gender,
+            googleId: profile._json.id,
+            name: profile._json.name.givenName,
+            lastName: profile._json.name.familyName,
+            gImage: profile._json.image.url
+        });
+        newGUser.save().then((savedGUser) => {
+            if (savedGUser)
+                return done(null, savedGUser.id);
+            return done(null, null, req.flash('danger', 'Something went wrong, Cant save user'));
+        }).catch((e) => {
+            req.flash('danger', 'Something went wrong.. code: gOauthSaveCatch');
+            console.log("loging error : \n", e);
+        });
+    }).catch((e) => {
+        req.flash('danger', 'Something went wrong.. code: gOauthFindCatch');
+        console.log("loging error : \n", e);
+    });;
 }));
 
 // https://da-friendsbook.herokuapp.com/google/redirect

@@ -10,8 +10,6 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fas fa-times noHover"></i></button></div>
                 {{/if}}
 
-                {{!-- flash --}}
-
                 {{#if flash.danger}}
                 <div class="alert alert-danger text-center mx-auto" role="alert" style="width:350px; transition: ease all 300ms">
                     {{flash.danger}}
@@ -52,8 +50,8 @@
                         <div class="form-group col-12"><input name="confirmPassword" type="password" class="form-control"
                                 placeholder="Confirm Password" required></div>
                     </div>
-                    <p>Already have account? <a href="/login">Log in</a></p><button type="submit" class="btn user_btn ml-auto">Sign
-                        Up</button>
+                    <p>Already have account? <a href="/login">Log in</a></p>
+                    <button type="submit" class="btn user_btn ml-auto">Sign Up</button>
                 </form>
             </div>
         </div>
@@ -74,7 +72,7 @@
                     const pass = $('[name="password"]').val();
                     const confirmPass = $('[name="confirmPassword"]').val();
 
-                    if (pass.length < 6 || confirmPass < 6) {
+                    if (pass.length < 6 || confirmPass.length < 6) {
                         $(".alert_box p").text("Password Length must be 6");
                         $(".alert_box").css("visibility", "visible").css("opacity", "1");
                     } else if (pass !== confirmPass) {
