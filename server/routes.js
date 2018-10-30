@@ -91,33 +91,47 @@ Router.post('/forgot', (req, res) => {
             req.flash('danger', 'Email is not registed');
             return res.redirect('/forgot')
         }
-        mailer.send(email, 'example', (err, res) => {
-            if (err) {
-                req.flash('danger', 'Cant sent verification mail.');
+        db.createLink(email, (err, hash) => {
+            if (err || !hash) {
+                req.flash('danger', err);
                 return res.redirect('/forgot');
             }
-            if (!res) {
-                req.flash('danger', 'something went wrong.');
-                console.log("******excess********");
+            const link = `${req.protocol}://${req.get('host')}/verify/${hash}`;
+            mailer.send(email, link, (err, result) => {
+                if (err) {
+                    req.flash('danger', 'Cant sent verification mail.');
+                    return res.redirect('/forgot');
+                }
+                if (!result) {
+                    req.flash('danger', 'something went wrong.');
+                    return res.redirect('/login');
+                }
+                req.flash('success', `Verification sent to <strong>${email}</strong>`);
                 return res.redirect('/login');
-            }
-            console.log('mail sent');
-            // problem comes here
-            return res.redirect('/login');
-
+            });
         });
     });
+});
 
+// verify
+Router.get('/verify/:token', (req, res) => {
+    db.verifyToken(req.params.token, (err, isVerified) => {
+        if (err || !isVerified) {
+            req.flash('danger', err);
+            res.redirect('/forgot');
+        }
+        req.flash('success', 'Account is Verified');
+        res.redirect('/login');
+    });
 });
 
 // create password
-Router.get('/createPass/:id', (req, res) => {
+Router.get('/createPass', (req, res) => {
     res.render('createPass', {
         flash: {
             success: req.flash('success'),
             danger: req.flash('danger'),
-        },
-        userID: req.params.id
+        }
     });
 });
 

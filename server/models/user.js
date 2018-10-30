@@ -10,6 +10,11 @@ var userSchema = new mongoose.Schema({
         unique: true,
         lowercase: true
     },
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    token: String,
     password: String,
     gender: String,
     googleId: String,
@@ -18,7 +23,13 @@ var userSchema = new mongoose.Schema({
     gImage: String
 });
 
-userSchema.methods.generateHash = pass => bcrypt.hashSync(pass, 8);
+userSchema.methods.generateHash = (pass, callback) => {
+    bcrypt.hash(pass, 8, (err, hash) => {
+        if (err || !hash)
+            return callback('error while hashing password');
+        return callback(null, hash);
+    });
+};
 
 userSchema.methods.validHash = function (enteredPass, callback) {
     if (!this.password)

@@ -1,3 +1,4 @@
 node_modules/
 bash.exe.stackdump
 server/config/keys/localKeys.js
+.vscode/

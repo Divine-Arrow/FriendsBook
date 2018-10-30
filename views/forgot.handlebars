@@ -6,13 +6,13 @@
                 {{!-- alert --}}
                 {{#if flash.success}}
                 <div class="alert alert-success text-center mx-auto" role="alert" style="width:350px; transition: ease all 300ms">
-                    {{flash.success}}
+                    {{{flash.success}}}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fas fa-times noHover"></i></button></div>
                 {{/if}}
 
                 {{#if flash.danger}}
                 <div class="alert alert-danger text-center mx-auto" role="alert" style="width:350px; transition: ease all 300ms">
-                    {{flash.danger}}
+                    {{{flash.danger}}}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="fas fa-times noHover"></i></button></div>
                 {{/if}}
 
@@ -25,9 +25,9 @@
                             <i class="fas fa-times noHover"></i>
                         </button>
                     </div>
-                    <h3>Create Password</h3>
-                    <p class="feature_main_para">Create Your password, last step to gain access.</p>
-                    <p class="d-sm-none">Register for free.</p>
+                    <h3>Forgot Password</h3>
+                    <p class="feature_main_para">Enter registed email, a verification mail will be send.</p>
+                    <p class="d-sm-none">Enter registed email</p>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6 col-8 m-auto">

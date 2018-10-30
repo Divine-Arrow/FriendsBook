@@ -37,16 +37,21 @@ passport.use('local-signup', new LocalStrategy({
                 if (password.length < 6)
                     return done(null, undefined, req.flash('danger', 'password length must be more than 5'));
 
-                newUser.password = newUser.generateHash(bodyData.password);
-                newUser.save().then((user) => {
-                    if (user)
-                        return done(null, user.id, req.flash('success', 'Signed up successfully.'));
-                }).catch((e) => {
-                    if (e.code === 11000) {
-                        console.log("email already exist");
-                    }
-                    return done(null, undefined, req.flash('danger', 'Somthing went wrong.'));
+                newUser.generateHash(bodyData.password, (err, hash) => {
+                    if (err || !hash)
+                        return done(null, undefined, req.flash('danger', 'Password hashing error..!'));
+                    newUser.password = hash;
+                    newUser.save().then((user) => {
+                        if (user)
+                            return done(null, user.id, req.flash('success', `Verify <strong>${user.email}</strong> to Login.`));
+                    }).catch((e) => {
+                        if (e.code === 11000) {
+                            console.log("email already exist");
+                        }
+                        return done(null, undefined, req.flash('danger', 'Somthing went wrong.'));
+                    });
                 });
+
             } else {
                 return done(null, undefined, req.flash('danger', 'Password fields does not match.'));
             }
@@ -70,11 +75,13 @@ passport.use('local-login', new LocalStrategy({
     }).then((user) => {
         if (!user)
             return done(null, undefined, req.flash('danger', 'You are not registered.'));
+        if (!user.isVerified)
+            return done(null, undefined, req.flash('danger', 'Please verify account or <a href="/forgot" style="color: inherit "><strong>forgot</strong></a>'));
         user.validHash(password, (err, result) => {
             if (err) {
                 if (err === 404) {
                     // pass data to routes.js
-                    return done(null, null, req.flash('danger', `<a href="/createPass/${user.id}"><strong>forget</strong></a> password or use Oauth.`));
+                    return done(null, null, req.flash('danger', `<a href="/forgot" style="color: inherit "><strong>forgot</strong></a> password or use Oauth.`));
                 }
                 return done(null, undefined, req.flash('danger', err));
             }
