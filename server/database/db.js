@@ -41,17 +41,18 @@ const verifyToken = (token, callback) => {
         token
     }).then((user) => {
         if (!user)
-            return callback(null, false);
+            return callback('Unauthorized Token', false);
         User.findByIdAndUpdate(user.id, {
             $set: {
-                isVerified: true
+                isVerified: true,
+                token: 'false'
             }
         }, {
             new: true
         }).then((verifiedUser) => {
             if (!verifiedUser)
-                return callback('Token Found But SWR on updating');
-            return callback(null, true);
+                return callback('Cant able to verify user, err:no user');
+            return callback(null, true, verifiedUser.id);
         }).catch((e) => {
             if (e)
                 return callback('Token Found But SWR on updating');
@@ -66,22 +67,27 @@ const verifyToken = (token, callback) => {
 // createPass
 const createPass = (id, pass, callback) => {
     User.findById(id).then((user) => {
-        if (!user)
-            return callback(404);
-        User.findByIdAndUpdate(user.id, {
-            $set: {
-                password: user.generateHash(pass)
-            }
-        }, {
-            new: true
-        }).then((updatedUser) => {
-            if (updatedUser) {
-                return callback(null, true);
-            }
-        }).catch((e) => {
-            console.log("**********", e);
-            if (e)
-                return callback('SWR at hashing');
+        user.generateHash(pass, (err, hash) => {
+            if (err)
+                return callback(err);
+            if (!hash)
+                return callback('Error');
+            if (!user)
+                return callback(404);
+            User.findByIdAndUpdate(user.id, {
+                $set: {
+                    password: hash
+                }
+            }, {
+                new: true
+            }).then((updatedUser) => {
+                if (updatedUser) {
+                    return callback(null, true);
+                }
+            }).catch((e) => {
+                if (e)
+                    return callback('SWR at hashing');
+            });
         });
     }).catch((e) => {
         if (e)

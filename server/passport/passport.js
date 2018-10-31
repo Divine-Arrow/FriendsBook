@@ -43,7 +43,7 @@ passport.use('local-signup', new LocalStrategy({
                     newUser.password = hash;
                     newUser.save().then((user) => {
                         if (user)
-                            return done(null, user.id, req.flash('success', `Verify <strong>${user.email}</strong> to Login.`));
+                            return done(null, user.id, req.flash('success', `Verify <strong>${user.email}</strong>`));
                     }).catch((e) => {
                         if (e.code === 11000) {
                             console.log("email already exist");

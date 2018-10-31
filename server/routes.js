@@ -38,7 +38,34 @@ Router.post('/register', passport.authenticate('local-signup', {
     failureRedirect: '/register'
 }), (req, res) => {
     req.logout();
-    res.redirect('/login');
+    db.findit(req.body.email, (err, email) => {
+        if (err) {
+            req.flash('danger', 'Something went Wrong');
+            return res.redirect('/forgot');
+        };
+        if (!email) {
+            req.flash('danger', 'Email is not registed');
+            return res.redirect('/forgot')
+        }
+        db.createLink(email, (err, hash) => {
+            if (err || !hash) {
+                req.flash('danger', err);
+                return res.redirect('/forgot');
+            }
+            const link = `${req.protocol}://${req.get('host')}/verify/new/${hash}`;
+            mailer.send(email, link, (err, result) => {
+                if (err) {
+                    req.flash('danger', 'Cant sent verification mail.');
+                    return res.redirect('/forgot');
+                }
+                if (!result) {
+                    req.flash('danger', 'something went wrong.');
+                    return res.redirect('/login');
+                }
+                return res.redirect('/login');
+            });
+        });
+    });
 });
 
 Router.get('/login', (req, res) => {
@@ -96,7 +123,7 @@ Router.post('/forgot', (req, res) => {
                 req.flash('danger', err);
                 return res.redirect('/forgot');
             }
-            const link = `${req.protocol}://${req.get('host')}/verify/${hash}`;
+            const link = `${req.protocol}://${req.get('host')}/verify/forgot/${hash}`;
             mailer.send(email, link, (err, result) => {
                 if (err) {
                     req.flash('danger', 'Cant sent verification mail.');
@@ -114,24 +141,30 @@ Router.post('/forgot', (req, res) => {
 });
 
 // verify
-Router.get('/verify/:token', (req, res) => {
-    db.verifyToken(req.params.token, (err, isVerified) => {
+Router.get('/verify/:way/:token', (req, res) => {
+    db.verifyToken(req.params.token, (err, isVerified, userId) => {
         if (err || !isVerified) {
             req.flash('danger', err);
-            res.redirect('/forgot');
+            return res.redirect('/forgot');
         }
-        req.flash('success', 'Account is Verified');
-        res.redirect('/login');
+        if (req.params.way === "new") {
+            req.flash('success', 'Account is Verified');
+            return res.redirect('/login');
+        } else if(req.params.way === "forgot") {
+            req.flash('success', 'Enter your password');
+            res.redirect(`/createPass/${userId}`);
+        }
     });
 });
 
 // create password
-Router.get('/createPass', (req, res) => {
+Router.get('/createPass/:id', (req, res) => {
     res.render('createPass', {
         flash: {
             success: req.flash('success'),
             danger: req.flash('danger'),
-        }
+        },
+        userID: req.params.id
     });
 });
 
