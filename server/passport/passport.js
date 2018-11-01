@@ -110,14 +110,16 @@ passport.use(new GoogleStrategy({
         email: profile._json.emails[0].value
     }).then((user) => {
         if (!user) {
-            var newGUser = new User({
+            var userData = {
                 email: profile._json.emails[0].value,
                 gender: profile._json.gender,
                 googleId: profile._json.id,
                 name: profile._json.name.givenName,
                 lastName: profile._json.name.familyName,
                 gImage: profile._json.image.url
-            });
+            }
+            userData = _.pick(userData, _.identity);
+            var newGUser = new User(userData);
             newGUser.save().then((savedGUser) => {
                 if (savedGUser)
                     return done(null, savedGUser.id);
@@ -127,11 +129,12 @@ passport.use(new GoogleStrategy({
             });
         } else if (user) {
             if (!user.googleId) {
-                const updateData = {
+                var updateData = {
                     gender: profile._json.gender,
                     googleId: profile._json.id,
                     gImage: profile._json.image.url
                 }
+                updateData = _.pick(updateData, _.identity);
                 User.findByIdAndUpdate(user.id, {
                     $set: updateData
                 }, {
@@ -167,7 +170,7 @@ passport.use(new FacebookStrategy({
         email: profile._json.email
     }).then((user) => {
         if (!user) {
-            var newFUser = new User({
+            var userData = {
                 email: profile._json.email,
                 name: profile._json.first_name,
                 lastName: profile._json.last_name,
@@ -177,7 +180,9 @@ passport.use(new FacebookStrategy({
                 facebookId: profile._json.id,
                 hometown: profile._json.hometown.name,
                 location: profile._json.location.name
-            });
+            }
+            userData = _.pick(userData, _.identity);
+            var newFUser = new User(userData);
             newFUser.save().then((savedFUser) => {
                 if (savedFUser)
                     return done(null, savedFUser.id);
@@ -188,7 +193,7 @@ passport.use(new FacebookStrategy({
             });
         } else if (user) {
             if (!user.facebookId) {
-                const updateData = {
+                var updateData = {
                     email: profile._json.email,
                     name: profile._json.first_name,
                     lastName: profile._json.last_name,
@@ -196,10 +201,10 @@ passport.use(new FacebookStrategy({
                     fImage: profile._json.picture.data.url,
                     gender: profile._json.gender,
                     facebookId: profile._json.id,
-
                     hometown: profile._json.hometown.name,
                     location: profile._json.location.name
                 }
+                updateData = _.pick(updateData, _.identity);
                 User.findByIdAndUpdate(user.id, {
                     $set: updateData
                 }, {
