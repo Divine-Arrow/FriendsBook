@@ -175,7 +175,6 @@ passport.use(new FacebookStrategy({
                 fImage: profile._json.picture.data.url,
                 gender: profile._json.gender,
                 facebookId: profile._json.id,
-                ageRange: profile._json.age_range.min,
                 hometown: profile._json.hometown.name,
                 location: profile._json.location.name
             });
@@ -197,7 +196,7 @@ passport.use(new FacebookStrategy({
                     fImage: profile._json.picture.data.url,
                     gender: profile._json.gender,
                     facebookId: profile._json.id,
-                    ageRange: profile._json.age_range.min,
+
                     hometown: profile._json.hometown.name,
                     location: profile._json.location.name
                 }
