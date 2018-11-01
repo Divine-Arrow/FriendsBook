@@ -63,7 +63,6 @@ passport.use('local-signup', new LocalStrategy({
     });
 }));
 
-
 // login
 passport.use('local-login', new LocalStrategy({
     usernameField: 'email',
@@ -76,7 +75,7 @@ passport.use('local-login', new LocalStrategy({
         if (!user)
             return done(null, undefined, req.flash('danger', 'You are not registered.'));
         if (!user.isVerified)
-            return done(null, undefined, req.flash('danger', 'Please verify account or <a href="/forgot" style="color: inherit "><strong>forgot</strong></a>'));
+            return done(null, undefined, req.flash('danger', 'Login with <strong>Google</strong> or <strong>facebook</strong>. else \n<a href="/forgot" style="color: inherit "><strong>forgot</strong></a> password'));
         user.validHash(password, (err, result) => {
             if (err) {
                 if (err === 404) {
@@ -128,6 +127,18 @@ passport.use(new GoogleStrategy({
         req.flash('danger', 'Something went wrong.. code: gOauthFindCatch');
         console.log("loging error : \n", e);
     });;
+}));
+
+// facebook
+passport.use(new FacebookStrategy({
+    clientID: keys.fb.clientID,
+    clientSecret: keys.fb.clientSecret,
+    passReqToCallback: true,
+    callbackURL: '/oauth/facebook/redirect',
+    failureRedirect: '/login',
+    profileFields: ['hometown', 'location', 'picture.height(480)', 'name', 'displayName', 'birthday', 'gender', 'email', 'age_range'],
+}, (req, accessToken, refreshToken, profile, done) => {
+    console.log("profile****************\n",profile);
 }));
 
 // https://da-friendsbook.herokuapp.com/google/redirect

@@ -7,6 +7,11 @@ const google = {
     clientSecret: process.env.GOOGLE_GOOGLE_SECRET
 }
 
+const fb = {
+    clientID : process.env.FB_FBID,
+    clientSecret: process.env.FB_FB_SECRET
+}
+
 const nodemailer = {
     service: process.env.MAILER_SERVICE,
     adminEmailId : process.env.MAILER_ADMIN_MAILID,
@@ -17,5 +22,6 @@ const nodemailer = {
 module.exports = {
     mongo,
     google,
+    fb,
     nodemailer
 }

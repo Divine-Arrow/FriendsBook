@@ -21,6 +21,8 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+// for https
+app.enable('trust proxy');
 
 // view engine
 app.engine('handlebars', exphbs({

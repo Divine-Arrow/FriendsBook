@@ -34,7 +34,7 @@ Router.get('/register', revAuthCheck, (req, res) => {
 });
 
 // Register POST
-Router.post('/register', passport.authenticate('local-signup', {
+Router.post('/register', revAuthCheck, passport.authenticate('local-signup', {
     failureRedirect: '/register'
 }), (req, res) => {
     req.logout();
@@ -68,7 +68,7 @@ Router.post('/register', passport.authenticate('local-signup', {
     });
 });
 
-Router.get('/login', (req, res) => {
+Router.get('/login', revAuthCheck, (req, res) => {
     res.render('login', {
         flash: {
             success: req.flash('success'),
@@ -78,27 +78,34 @@ Router.get('/login', (req, res) => {
 });
 
 // local-login-post
-Router.post('/login', passport.authenticate('local-login', {
+Router.post('/login', revAuthCheck, passport.authenticate('local-login', {
     successRedirect: '/chat',
     failureRedirect: '/login'
 }));
 
 // google
-Router.get('/oauth/google', passport.authenticate('google', {
+Router.get('/oauth/google', revAuthCheck, passport.authenticate('google', {
     scope: ['profile', 'email']
 }));
 // google redirect
-Router.get('/oauth/google/redirect', passport.authenticate('google', {
+Router.get('/oauth/google/redirect', revAuthCheck, passport.authenticate('google', {
     successRedirect: '/chat',
     failureRedirect: '/login'
 }));
+
+// facebook
+Router.get('/oauth/facebook', passport.authenticate('facebook', {
+    // the scope is porvided on the passport-setup.js
+    scope: ['email', 'user_gender', 'user_birthday', 'user_location', 'user_hometown', 'user_age_range']
+}));
+
 
 Router.get('/find', authCheck, (req, res) => {
     res.render('find');
 });
 
 // Forgot password
-Router.get('/forgot', (req, res) => {
+Router.get('/forgot', revAuthCheck, (req, res) => {
     res.render('forgot', {
         flash: {
             success: req.flash('success'),
@@ -108,7 +115,7 @@ Router.get('/forgot', (req, res) => {
 });
 
 // Forgot POST password
-Router.post('/forgot', (req, res) => {
+Router.post('/forgot', revAuthCheck, (req, res) => {
     db.findit(req.body.email, (err, email) => {
         if (err) {
             req.flash('danger', 'Something went Wrong');
@@ -141,7 +148,7 @@ Router.post('/forgot', (req, res) => {
 });
 
 // verify
-Router.get('/verify/:way/:token', (req, res) => {
+Router.get('/verify/:way/:token', revAuthCheck, (req, res) => {
     db.verifyToken(req.params.token, (err, isVerified, userId) => {
         if (err || !isVerified) {
             req.flash('danger', err);
@@ -150,7 +157,7 @@ Router.get('/verify/:way/:token', (req, res) => {
         if (req.params.way === "new") {
             req.flash('success', 'Account is Verified');
             return res.redirect('/login');
-        } else if(req.params.way === "forgot") {
+        } else if (req.params.way === "forgot") {
             req.flash('success', 'Enter your password');
             res.redirect(`/createPass/${userId}`);
         }
@@ -158,7 +165,7 @@ Router.get('/verify/:way/:token', (req, res) => {
 });
 
 // create password
-Router.get('/createPass/:id', (req, res) => {
+Router.get('/createPass/:id', revAuthCheck, (req, res) => {
     res.render('createPass', {
         flash: {
             success: req.flash('success'),
@@ -169,7 +176,7 @@ Router.get('/createPass/:id', (req, res) => {
 });
 
 // createPassPost
-Router.post('/createPass/:id', (req, res) => {
+Router.post('/createPass/:id', revAuthCheck, (req, res) => {
     if (req.body.password !== req.body.confirmPassword) {
         req.flash('danger', 'password must match, try again.');
         return res.redirect('/login');
