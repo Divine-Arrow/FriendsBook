@@ -16,6 +16,7 @@ const app = express(),
 mongoose.connect(keys.mongo.database, {
     useNewUrlParser: true
 });
+mongoose.set('useCreateIndex', true);
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({

@@ -7,10 +7,14 @@ const keys = require('../config/keys/keys');
 const _ = require("lodash");
 
 passport.serializeUser((userId, done) => {
-    done(null, userId);
+    if (!userId)
+        return done('error reload again.');
+    return done(null, userId);
 });
 
 passport.deserializeUser((id, done) => {
+    if (!id)
+        return done('please reload again.');
     User.findById(id).then((user) => {
         done(null, user)
     }).catch((e) => {
@@ -105,28 +109,47 @@ passport.use(new GoogleStrategy({
     User.findOne({
         email: profile._json.emails[0].value
     }).then((user) => {
-        if (user)
+        if (!user) {
+            var newGUser = new User({
+                email: profile._json.emails[0].value,
+                gender: profile._json.gender,
+                googleId: profile._json.id,
+                name: profile._json.name.givenName,
+                lastName: profile._json.name.familyName,
+                gImage: profile._json.image.url
+            });
+            newGUser.save().then((savedGUser) => {
+                if (savedGUser)
+                    return done(null, savedGUser.id);
+                return done(null, null, req.flash('danger', 'Something went wrong, Cant save user'));
+            }).catch((e) => {
+                req.flash('danger', 'Something went wrong.. code: gOauthSaveCatch');
+            });
+        } else if (user) {
+            if (!user.googleId) {
+                const updateData = {
+                    gender: profile._json.gender,
+                    googleId: profile._json.id,
+                    gImage: profile._json.image.url
+                }
+                User.findByIdAndUpdate(user.id, {
+                    $set: updateData
+                }, {
+                    new: true
+                }).then((updatedUser) => {
+                    if (!updatedUser)
+                        return req.flash('danger', 'cant update user');
+                }).catch((e) => {
+                    if (e)
+                        return req.flash('danger', 'Something went wrong.. catch-code: gUpdateSaveCatch');
+                })
+            }
             return done(null, user.id);
-        var newGUser = new User({
-            email: profile._json.emails[0].value,
-            gender: profile._json.gender,
-            googleId: profile._json.id,
-            name: profile._json.name.givenName,
-            lastName: profile._json.name.familyName,
-            gImage: profile._json.image.url
-        });
-        newGUser.save().then((savedGUser) => {
-            if (savedGUser)
-                return done(null, savedGUser.id);
-            return done(null, null, req.flash('danger', 'Something went wrong, Cant save user'));
-        }).catch((e) => {
-            req.flash('danger', 'Something went wrong.. code: gOauthSaveCatch');
-            console.log("loging error : \n", e);
-        });
+        }
     }).catch((e) => {
         req.flash('danger', 'Something went wrong.. code: gOauthFindCatch');
         console.log("loging error : \n", e);
-    });;
+    });
 }));
 
 // facebook
@@ -138,7 +161,65 @@ passport.use(new FacebookStrategy({
     failureRedirect: '/login',
     profileFields: ['hometown', 'location', 'picture.height(480)', 'name', 'displayName', 'birthday', 'gender', 'email', 'age_range'],
 }, (req, accessToken, refreshToken, profile, done) => {
-    console.log("profile****************\n",profile);
+    if (!profile || !profile._json.email)
+        return done('cant find profile', req.flash('danger', 'cant find profile on fb.'));
+    User.findOne({
+        email: profile._json.email
+    }).then((user) => {
+        if (!user) {
+            var newFUser = new User({
+                email: profile._json.email,
+                name: profile._json.first_name,
+                lastName: profile._json.last_name,
+                birthday: profile._json.birthday,
+                fImage: profile._json.picture.data.url,
+                gender: profile._json.gender,
+                facebookId: profile._json.id,
+                ageRange: profile._json.age_range.min,
+                hometown: profile._json.hometown.name,
+                location: profile._json.location.name
+            });
+            newFUser.save().then((savedFUser) => {
+                if (savedFUser)
+                    return done(null, savedFUser.id);
+                return done(null, null, req.flash('danger', 'Something went wrong, Cant create user'));
+            }).catch((e) => {
+                if (e)
+                    return req.flash('danger', 'Something went wrong.. code: fOauthSaveCatch');
+            });
+        } else if (user) {
+            if (!user.facebookId) {
+                const updateData = {
+                    email: profile._json.email,
+                    name: profile._json.first_name,
+                    lastName: profile._json.last_name,
+                    birthday: profile._json.birthday,
+                    fImage: profile._json.picture.data.url,
+                    gender: profile._json.gender,
+                    facebookId: profile._json.id,
+                    ageRange: profile._json.age_range.min,
+                    hometown: profile._json.hometown.name,
+                    location: profile._json.location.name
+                }
+                User.findByIdAndUpdate(user.id, {
+                    $set: updateData
+                }, {
+                    new: true
+                }).then((updatedUser) => {
+                    if (!updatedUser)
+                        return req.flash('danger', 'cant update user');
+                }).catch((e) => {
+                    if (e)
+                        return req.flash('danger', 'Something went wrong.. catch-code: fUpdateSaveCatch');
+                })
+            }
+            return done(null, user.id);
+
+        }
+    }).catch((e) => {
+        req.flash('danger', 'Something went wrong.. code: gOauthFindCatch');
+        console.log("loging error : \n", e);
+    });
 }));
 
 // https://da-friendsbook.herokuapp.com/google/redirect

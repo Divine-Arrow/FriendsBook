@@ -99,6 +99,11 @@ Router.get('/oauth/facebook', passport.authenticate('facebook', {
     scope: ['email', 'user_gender', 'user_birthday', 'user_location', 'user_hometown', 'user_age_range']
 }));
 
+// facebook redirect
+Router.get('/oauth/facebook/redirect', passport.authenticate('facebook', {
+    successRedirect: '/chat',
+    failureRedirect: '/login'
+}));
 
 Router.get('/find', authCheck, (req, res) => {
     res.render('find');

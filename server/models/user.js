@@ -10,17 +10,23 @@ var userSchema = new mongoose.Schema({
         unique: true,
         lowercase: true
     },
+    password: String,
+    name: String,
+    lastName: String,
     isVerified: {
         type: Boolean,
         default: false
     },
-    token: String,
-    password: String,
+    birthday: String,
+    gImage: String,
+    fImage: String,
     gender: String,
     googleId: String,
-    name: String,
-    lastName: String,
-    gImage: String
+    facebookId: String,
+    ageRange: Number,
+    hometown: String,
+    location: String,
+    token: String,
 });
 
 userSchema.methods.generateHash = (pass, callback) => {
