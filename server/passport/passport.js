@@ -175,9 +175,7 @@ passport.use(new FacebookStrategy({
                 birthday: profile._json.birthday,
                 fImage: profile._json.picture.data.url,
                 gender: profile._json.gender,
-                facebookId: profile._json.id,
-                hometown: profile._json.hometown.name,
-                location: profile._json.location.name
+                facebookId: profile._json.id
             };
             var newFUser = new User(userData);
             newFUser.save().then((savedFUser) => {
