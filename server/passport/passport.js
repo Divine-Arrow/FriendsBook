@@ -18,7 +18,7 @@ passport.deserializeUser((id, done) => {
     User.findById(id).then((user) => {
         done(null, user)
     }).catch((e) => {
-        if (e) console.log('error at deserialize');
+        if (e) done('err');
     })
 });
 
@@ -50,7 +50,7 @@ passport.use('local-signup', new LocalStrategy({
                             return done(null, user.id, req.flash('success', `Verify <strong>${user.email}</strong>`));
                     }).catch((e) => {
                         if (e.code === 11000) {
-                            console.log("email already exist");
+                            return done(null, undefined, req.flash('danger', 'Email Already exist.'));
                         }
                         return done(null, undefined, req.flash('danger', 'Somthing went wrong.'));
                     });
@@ -149,7 +149,6 @@ passport.use(new GoogleStrategy({
         }
     }).catch((e) => {
         req.flash('danger', 'Something went wrong.. code: gOauthFindCatch');
-        console.log("loging error : \n", e);
     });
 }));
 
@@ -179,7 +178,6 @@ passport.use(new FacebookStrategy({
             };
             var newFUser = new User(userData);
             newFUser.save().then((savedFUser) => {
-                console.log("is saved ,", savedFUser);
                 if (savedFUser)
                     return done(null, savedFUser.id);
                 return done(null, null, req.flash('danger', 'Something went wrong, Cant create user'));
@@ -216,7 +214,6 @@ passport.use(new FacebookStrategy({
         }
     }).catch((e) => {
         req.flash('danger', 'Something went wrong.. code: gOauthFindCatch');
-        console.log("loging error : \n", e);
     });
 }));
 
