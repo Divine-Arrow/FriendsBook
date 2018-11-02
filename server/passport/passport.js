@@ -181,6 +181,7 @@ passport.use(new FacebookStrategy({
                     hometown: profile._json.hometown.name,
                     location: profile._json.location.name
                 };
+            } catch(e) {
             }
             var newFUser = new User(userData);
             newFUser.save().then((savedFUser) => {
