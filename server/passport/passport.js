@@ -167,21 +167,16 @@ passport.use(new FacebookStrategy({
     User.findOne({
         email: profile._json.email
     }).then((user) => {
-        if (!user) {''
-            var userData = _.pick(profile._json, ['email', 'first_name', 'last_name', 'birthday', 'picture.data.url', 'gender', 'id', 'hometown.name', 'location.name']);
-            console.log("userData: ",userData);
+        if (!user) {
             userData = {
-                email: userData.email,
-                name: userData.first_name,
-                lastName: userData.last_name,
-                birthday: userData.birthday,
-                fImage: userData.picture.data.url,
-                gender: userData.gender,
-                facebookId: userData.id,
-                hometown: userData.hometown.name,
-                location: userData.location.name
+                email: profile._json.email,
+                name: profile._json.first_name,
+                lastName: profile._json.last_name,
+                birthday: profile._json.birthday,
+                fImage: profile._json.picture.data.url,
+                gender: profile._json.gender,
+                facebookId: profile._json.id
             };
-            var newFUser = new User(userData);
             newFUser.save().then((savedFUser) => {
                 console.log("is saved ,", savedFUser);
                 if (savedFUser)
