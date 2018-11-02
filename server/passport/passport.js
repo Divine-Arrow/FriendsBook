@@ -118,7 +118,6 @@ passport.use(new GoogleStrategy({
                 lastName: profile._json.name.familyName,
                 gImage: profile._json.image.url
             }
-            userData = _.pick(userData, _.identity);
             var newGUser = new User(userData);
             newGUser.save().then((savedGUser) => {
                 if (savedGUser)
@@ -134,7 +133,6 @@ passport.use(new GoogleStrategy({
                     googleId: profile._json.id,
                     gImage: profile._json.image.url
                 }
-                updateData = _.pick(updateData, _.identity);
                 User.findByIdAndUpdate(user.id, {
                     $set: updateData
                 }, {
@@ -180,8 +178,7 @@ passport.use(new FacebookStrategy({
                 facebookId: profile._json.id,
                 hometown: profile._json.hometown.name,
                 location: profile._json.location.name
-            }
-            userData = _.pick(userData, _.identity);
+            };
             var newFUser = new User(userData);
             newFUser.save().then((savedFUser) => {
                 if (savedFUser)
@@ -194,7 +191,6 @@ passport.use(new FacebookStrategy({
         } else if (user) {
             if (!user.facebookId) {
                 var updateData = {
-                    email: profile._json.email,
                     name: profile._json.first_name,
                     lastName: profile._json.last_name,
                     birthday: profile._json.birthday,
@@ -204,7 +200,6 @@ passport.use(new FacebookStrategy({
                     hometown: profile._json.hometown.name,
                     location: profile._json.location.name
                 }
-                updateData = _.pick(updateData, _.identity);
                 User.findByIdAndUpdate(user.id, {
                     $set: updateData
                 }, {
