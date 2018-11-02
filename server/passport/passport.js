@@ -177,6 +177,7 @@ passport.use(new FacebookStrategy({
                 gender: profile._json.gender,
                 facebookId: profile._json.id
             };
+            var newFUser = new User(userData);
             newFUser.save().then((savedFUser) => {
                 console.log("is saved ,", savedFUser);
                 if (savedFUser)
