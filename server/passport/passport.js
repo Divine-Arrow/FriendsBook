@@ -168,23 +168,20 @@ passport.use(new FacebookStrategy({
         email: profile._json.email
     }).then((user) => {
         if (!user) {
-            var userData;
-            try {
-                userData = {
-                    email: profile._json.email,
-                    name: profile._json.first_name,
-                    lastName: profile._json.last_name,
-                    birthday: profile._json.birthday,
-                    fImage: profile._json.picture.data.url,
-                    gender: profile._json.gender,
-                    facebookId: profile._json.id,
-                    hometown: profile._json.hometown.name,
-                    location: profile._json.location.name
-                };
-            } catch(e) {
-            }
+            var userData = {
+                email: profile._json.email,
+                name: profile._json.first_name,
+                lastName: profile._json.last_name,
+                birthday: profile._json.birthday,
+                fImage: profile._json.picture.data.url,
+                gender: profile._json.gender,
+                facebookId: profile._json.id,
+                hometown: profile._json.hometown.name,
+                location: profile._json.location.name
+            };
             var newFUser = new User(userData);
             newFUser.save().then((savedFUser) => {
+                console.log("is saved ,", savedFUser);
                 if (savedFUser)
                     return done(null, savedFUser.id);
                 return done(null, null, req.flash('danger', 'Something went wrong, Cant create user'));
