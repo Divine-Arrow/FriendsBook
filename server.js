@@ -39,6 +39,13 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+// https force
+app.get('*', function (req, res, next) {
+    if (req.headers['x-forwarded-proto'] != 'https')
+        res.redirect('https://mypreferreddomain.com' + req.url)
+    else
+        next();
+})
 // routes
 app.use('/', routes);
 
