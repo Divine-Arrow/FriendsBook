@@ -175,8 +175,8 @@ passport.use(new FacebookStrategy({
                 fImage: profile._json.picture.data.url,
                 gender: profile._json.gender,
                 facebookId: profile._json.id,
-                /* hometown: profile._json.hometown.name,
-                    location: profile._json.location.name */
+                hometown: profile._json.hometown.name,
+                location: profile._json.location.name
             };
             var newFUser = new User(userData);
             newFUser.save().then((savedFUser) => {
@@ -196,8 +196,8 @@ passport.use(new FacebookStrategy({
                     fImage: profile._json.picture.data.url,
                     gender: profile._json.gender,
                     facebookId: profile._json.id,
-                    /* hometown: profile._json.hometown.name,
-                    location: profile._json.location.name */
+                    hometown: profile._json.hometown.name,
+                    location: profile._json.location.name
                 }
                 User.findByIdAndUpdate(user.id, {
                     $set: updateData

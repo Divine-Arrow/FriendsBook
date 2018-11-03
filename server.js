@@ -22,6 +22,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+
 // for https
 app.enable('trust proxy');
 
@@ -40,12 +41,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // https force
-app.get('*', function (req, res, next) {
+/* app.get('*', function (req, res, next) {
     if (req.headers['x-forwarded-proto'] != 'https')
         res.redirect('https://mypreferreddomain.com' + req.url)
     else
         next();
-})
+}) */
 // routes
 app.use('/', routes);
 
