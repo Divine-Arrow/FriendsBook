@@ -210,6 +210,10 @@ Router.get('/logout', authCheck, (req, res) => {
     res.redirect('/login');
 });
 
+Router.get('/pirvacy-policy', (req, res) => {
+    res.render('privacyPolicy');
+});
+
 Router.get('*', (req, res) => {
     res.render('notFound');
 });
