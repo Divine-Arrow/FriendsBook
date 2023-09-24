@@ -37,32 +37,37 @@ Router.get('/register', revAuthCheck, (req, res) => {
 Router.post('/register', revAuthCheck, passport.authenticate('local-signup', {
     failureRedirect: '/register'
 }), (req, res) => {
-    req.logout();
-    db.findit(req.body.email, (err, email) => {
-        if (err) {
-            req.flash('danger', 'Something went Wrong');
-            return res.redirect('/forgot');
-        };
-        if (!email) {
-            req.flash('danger', 'Email is not registed');
-            return res.redirect('/forgot')
-        }
-        db.createLink(email, (err, hash) => {
-            if (err || !hash) {
-                req.flash('danger', err);
+    // req.logout();
+    req.logout((err) => {
+        if (err) { res.redirect('/login'); }
+        // res.redirect('/login');
+        db.findit(req.body.email, (err, email) => {
+            if (err) {
+                req.flash('danger', 'Something went Wrong');
                 return res.redirect('/forgot');
+            };
+            if (!email) {
+                req.flash('danger', 'Email is not registed');
+                return res.redirect('/forgot')
             }
-            const link = `${req.protocol}://${req.get('host')}/verify/new/${hash}`;
-            mailer.send(email, link, (err, result) => {
-                if (err) {
-                    req.flash('danger', 'Cant sent verification mail.');
+            db.createLink(email, (err, hash) => {
+                if (err || !hash) {
+                    req.flash('danger', err);
                     return res.redirect('/forgot');
                 }
-                if (!result) {
-                    req.flash('danger', 'something went wrong.');
+                const link = `${req.protocol}://${req.get('host')}/verify/new/${hash}`;
+                mailer.send(email, link, (err, result) => {
+                    if (err) {
+                        req.flash('success', `<a href="${link}">Verify here</a>`);
+                        req.flash('danger', `Cant sent verification mail.`);
+                        return res.redirect('/forgot');
+                    }
+                    if (!result) {
+                        req.flash('danger', 'something went wrong.');
+                        return res.redirect('/login');
+                    }
                     return res.redirect('/login');
-                }
-                return res.redirect('/login');
+                });
             });
         });
     });
@@ -160,7 +165,7 @@ Router.get('/verify/:way/:token', revAuthCheck, (req, res) => {
             return res.redirect('/forgot');
         }
         if (req.params.way === "new") {
-            req.flash('success', 'Account is Verified');
+            req.flash('success', 'Account Verified ! Try Loging in');
             return res.redirect('/login');
         } else if (req.params.way === "forgot") {
             req.flash('success', 'Enter your password');
@@ -196,7 +201,10 @@ Router.post('/createPass/:id', revAuthCheck, (req, res) => {
     });
 });
 
-Router.get('/chat', authCheck, (req, res) => {
+/* Router.get('/chat', authCheck, (req, res) => {
+    res.render('chat');
+}); */
+Router.get('/chat', (req, res) => {
     res.render('chat');
 });
 
@@ -205,9 +213,15 @@ Router.get('/thanks', authCheck, (req, res) => {
 });
 
 Router.get('/logout', authCheck, (req, res) => {
-    req.logOut();
-    req.flash('success', 'Loged out');
-    res.redirect('/login');
+
+    req.logout((err) => {
+        if (err) { res.redirect('/login');; }
+        res.redirect('/login');
+    });
+
+    // req.logOut();
+    // req.flash('success', 'Loged out');
+    // res.redirect('/login');
 });
 
 Router.get('/pirvacy-policy', (req, res) => {

@@ -14,8 +14,15 @@ const app = express(),
     port = process.env.PORT || 3000;
 
 mongoose.connect(keys.mongo.database, {
-    useNewUrlParser: true
-});
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+})
+.then(
+    (res) => console.log("DB is ready"),
+    (err) => console.log("DB ERROR CONNECTING",err)
+);
+
 mongoose.set('useCreateIndex', true);
 
 app.use(express.static('public'));
